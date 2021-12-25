@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.parent_card {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px solid red; */
+}
+.card {
+  width: 30%;
+  justify-content: space-around;
+  margin-top: 1em;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  &:hover {
+    box-shadow: 0px 0px 5px 5px  rgba(0, 0, 0, 0.2);
+  }
+}
+
+.batch_card {
+  height: 300px;
+  border: 1px solid lightblue;
+  border-top: 5px solid blueviolet;
+}
+
+.batch_details {
+  padding: 0.5em 0.4em;
+  background-color: rgb(231, 228, 228);
+}
+
+.form-buttons {
+  width: 100%;
+  /* border: 1px solid blueviolet; */
+  display: flex;
+  justify-content: center;
+  button {
+    margin: 1em;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+  }
+
+  .edit {
+    background-color: orangered;
+    border: 0;
+    color: white;
+  }
+}
+
+a{
+  text-decoration: none;
+}

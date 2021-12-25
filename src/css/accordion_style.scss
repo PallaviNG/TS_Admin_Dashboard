@@ -1,0 +1,52 @@
+@import "_colors";
+/* Style the links that are used to open and close the accordion panel*/
+.accordion {
+  // background-color: #eee;
+  background-image: linear-gradient(rgba(0,0,250,0.2));
+  color: purple;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgb(193, 162, 223);
+  transition: 0.4s;
+}
+
+.accordion:hover {
+  // background-color: lightskyblue;
+  background-color: rgba(141, 58, 219,0.2);
+  color: blue;
+}
+
+.accordion span {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  &:hover {
+    background-color: rgba(141, 58, 219,0.4);
+  }
+}
+
+.panel {
+  display: none;
+}
+
+.accordion:hover > .panel {
+  display: flex;
+  flex-direction: column;
+  color: $success-color;
+  // background-color: blueviolet;
+}
+
+.panel > a {
+  padding: 0.8em 1em;
+  background-color: white;
+  color: $primary-color;
+  display: flex;
+  overflow: hidden;
+  margin-left: 5px;
+}
+
+.panel > a:hover {
+  border:1px solid darkslategray;
+  color:$primary-color;
+}

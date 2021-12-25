@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.parentContainer {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginContainer {
+  /* height: 17em; */
+  width: 40%;
+  background-color: white;
+  border: 1px solid white;
+  z-index: 1;
+}
+.loginContainer:hover {
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.4);
+}
+.loginHeader {
+  height: 5em;
+  width: 100%;
+  padding: 0 3em;
+  color: white;
+  background-color: rgb(214, 22, 22);
+  box-shadow: inset 0px 5px 8px darkred, inset -10px 5px 8px darkred,
+    inset 10px 5px 8px darkred;
+}
+.loginHeader > img {
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
+}
+
+.login-form-group {
+  padding: 1em;
+  width: 100%;
+}
+
+.login-form-group > input,
+.login-form-group > select {
+    width: 80%;
+    padding-left: 8px;
+  height: 35px;
+  border: 1px solid lightgray;
+  border-radius: 0 5px 5px 0;
+  box-shadow: inset 0px 0px 5px 2px lightgray;
+}
+.login-form-group > input:hover {
+    cursor: text;
+}
+.login-form-group > select:hover {
+    cursor: pointer;
+}
+
+.login-form-group > span {
+  color: goldenrod;
+  border: 1px solid lightgray;
+  /* padding:6px; */
+  height: 35px;
+  width: 35px;
+  border-radius: 5px 0 0 5px;
+  box-shadow: inset 0px 0px 5px 2px lightgray;
+}
+
+.loginButton {
+  background-color: white;
+  height: 55px;
+  width: 100%;
+  padding: 1em;
+}
+.loginButton > button {
+  /* background-color: rgb(207, 12, 12);
+    border:1px solid darkred; */
+  border: 1px solid darkred;
+  background-color: goldenrod;
+  color: white;
+  padding: 10px 20px;
+}
+
+.loginButton > button:hover {
+  /* background: linear-gradient(to bottom, darkred,red); */
+  background: linear-gradient(to bottom, goldenrod, gold);
+  cursor: pointer;
+}
+
+.loginCheckbox {
+  /* border:1px solid rgb(88, 83, 83); */
+  font-size: 1em;
+  margin: 0.5em;
+}
+
+.loginCheckbox > .checkbox {
+  height: 15px;
+  width: 15px;
+  margin: 0.5em;
+}

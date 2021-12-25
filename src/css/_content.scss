@@ -1,0 +1,150 @@
+@import "_colors";
+.formComponent {
+  /* height: 80vh; */
+  width: 97%;
+  /* border:1px solid gray; */
+  margin: 10px 5px;
+  box-shadow: 0px 0px 2px 3px lightgray;
+  padding: 1em;
+}
+
+.form-group {
+  width: inherit;
+  padding: 15px;
+  margin: 10px;
+  background-color: lightgray;
+}
+
+.form-group > label {
+  width: 200px;
+}
+
+.form-group > input,
+.form-group > select {
+  width: 95%;
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid dodgerblue;
+}
+.form-group > input:hover {
+  box-shadow: inset 0px 0px 2px 2px lightblue;
+  cursor: text;
+}
+.form-group > input:active {
+  cursor: text;
+}
+
+.fa_icons {
+  /* border:1px solid black; */
+  padding: 3px;
+  font-size: 20px;
+  color: dodgerblue;
+}
+
+button {
+  padding: 5px 15px;
+  border: 1px solid dodgerblue;
+  background-color: lightcyan;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: lightblue;
+}
+
+button:active {
+  background-color: dodgerblue;
+}
+
+.content_area_cards {
+  width: inherit;
+  justify-content: space-around;
+}
+
+.main_page_cards {
+  width: 20%;
+  height: 20vh;
+  // border: 1px solid $info-color;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-size: 18%, 90%, cover;
+  background-repeat: no-repeat;
+  background-position-x: 4%;
+  background-position-y: 4%;
+  background-blend-mode: soft-light;
+  color: white;
+
+  // &:hover {
+  //   transform: scale(1.05);
+  //   transition: 1s transform;
+  // }
+  .listCount {
+    font-weight: bold;
+    font-size: 2.3em;
+    margin-right: 0.3em;
+  }
+  a {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  .main_page_cards_icon {
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+    color: lightblue;
+    &:hover {
+      transform: scale(1.3);
+      transition: 1s transform;
+        background-color: $success-color;
+        color: blue;
+    }
+  }
+}
+
+.template_cards {
+  background-color: $info-color;
+  background-image: url('../assets/images/MainPageIcons/templates.png');
+  &:hover {
+    background-color: $success-color;
+    color: white;
+  }
+}
+
+.student_cards {
+  background-color: $warning-color;
+  background-image: url('../assets/images/MainPageIcons/students.png');
+  &:hover {
+    background-color: $success-color;
+    color: white;
+  }
+}
+
+.mock_submitted_cards {
+  background-color: $danger-color;
+  background-image: url('../assets/images/MainPageIcons/submitted.png');
+  &:hover {
+    background-color: $success-color;
+    color: white;
+  }
+}
+
+.interviewers_cards {
+  background-color: $secondary-color;
+  background-image: url('../assets/images/MainPageIcons/interviewers.png');
+  &:hover {
+    background-color: $success-color;
+    color: white;
+  }
+}
+
+.template_card_icons {
+  height: 10vh;
+  width: 80%;
+  // background-color: transparent;
+}

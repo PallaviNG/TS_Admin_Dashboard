@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 260px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(0, 0, 255, 0.2))), url("/src/assets/images/sidebar_bg.jpg");
+  background-image: linear-gradient(to bottom, white, rgba(0, 0, 255, 0.2)), url("/src/assets/images/sidebar_bg.jpg");
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
+.sidebar a.active span {
+  background-color: #04aa6d;
+  color: white;
+}
+
+.sidebar a:hover {
+  background-color: rgba(176, 131, 218, 0.2);
+  color: purple;
+}
+
+div.content {
+  margin-left: 280px;
+  padding: 1px 16px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {
+    float: left;
+  }
+  div.content {
+    margin-left: 10;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+.links {
+  color: white;
+}
+
+.links:hover {
+  color: lightskyblue;
+}
+
+h4 {
+  color: blue;
+  padding-bottom: 1em;
+}
+
+input:disabled {
+  background-color: #fcc8c8;
+}
+
+input:-moz-read-only {
+  cursor: not-allowed !important;
+}
+
+input:read-only {
+  cursor: not-allowed !important;
+}
+
+.error {
+  color: red;
+  font-style: oblique;
+  /* margin:5px; */
+}
+/*# sourceMappingURL=style.css.map */
