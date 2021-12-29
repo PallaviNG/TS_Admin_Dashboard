@@ -1,0 +1,29 @@
+@import "colors";
+//Background colors
+.primary-color {
+  color: $primary-color;
+}
+
+.success-color {
+  color: $success-color;
+}
+
+.info-color {
+  color: $info-color;
+}
+
+.warning-color {
+  color: $warning-color;
+}
+
+.danger-color {
+  color: $danger-color;
+}
+
+.faded-color {
+  color: $faded-color;
+}
+
+.inverse-color {
+  color: $inverse-color;
+}

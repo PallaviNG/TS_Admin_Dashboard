@@ -19,3 +19,5 @@ export const saveAllMockStudentDetailsAction = (studentList) => {
       payload: deleteID
     };
   };
+
+  

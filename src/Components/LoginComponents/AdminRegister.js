@@ -17,7 +17,9 @@ function AdminRegister({ history }) {
         { name: '-select role-', value: '' },
         { name: 'admin', value: 'admin' },
         { name: 'trainer', value: 'trainer' },
-        { name: 'student', value: 'student' }];
+        { name: 'student', value: 'student' },
+        { name: 'interviewer', value: 'interviewer' }
+    ];
 
     let validationSchema = yup.object().shape({
         admin_name: yup.string().min(4, "username must be more than 4 characters").max(30, "admin username must be less than 30 characters").required("username is required"),
@@ -39,7 +41,7 @@ function AdminRegister({ history }) {
             <div className="loginContainer">
                 <div className="loginHeader flex align-items-center justify-content-space-around">
                     <img src={circular_logo} alt="logo" />
-                    <h2> Admin Panel Register</h2>
+                    <h2> Admin Register</h2>
                 </div>
 
                 <Formik

@@ -116,7 +116,7 @@ button:active {
   }
 }
 
-.student_cards {
+.batch_cards {
   background-color: $warning-color;
   background-image: url('../assets/images/MainPageIcons/students.png');
   &:hover {
@@ -147,4 +147,14 @@ button:active {
   height: 10vh;
   width: 80%;
   // background-color: transparent;
+}
+
+.adminDetailsContainer{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 1em 0;
+}
+.interviewerDetailsContainer {
+  width: 100%;
 }

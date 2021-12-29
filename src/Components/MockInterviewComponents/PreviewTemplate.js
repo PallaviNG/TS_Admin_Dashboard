@@ -6,12 +6,11 @@ import { useDispatch } from "react-redux";
 import { createNewTemplate, getTemplateList } from "./../../Service/templateService";
 import { addNewTemplateAction,deleteQuestionSet } from "./../../redux/action/TemplateAction";
 
-
 function PreviewTemplate({ history ,user }) {
   let templateInputs = useSelector((state) => state.templateDetails.templateQuestionSet);
   let [templateName, setTemplateName] = useState("");
 
-  // console.log(user);
+  console.log(user);
   let dispatch = useDispatch();
   let [initialValues, setInitialValues] = useState({
     sample: "",

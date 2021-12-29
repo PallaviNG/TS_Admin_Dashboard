@@ -47,52 +47,70 @@
 
 /*Single Interviewer Details*/
 .interviewerDetailParentContainer {
-  border:1px solid gray;
+  height: 70vh;
+  border: 1px solid gray;
   width: inherit;
   margin: 2em;
   background-color: rgb(233, 233, 233);
+
+  .details {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  label {
+    width: 19%;
+    display: inline-block;
+  }
 }
 
 .single_interviewer_details {
-  width: 80%;
+  width: 60%;
   padding: 0.5em;
   padding-left: 1em;
   margin: 0.2em;
-  background-color: lightgoldenrodyellow;
-  border: 1px solid goldenrod;
+  background-color: white;
   border-radius: 5px;
-}
-
-
-.detail_heading {
-  margin-top: 1em;
-  border-top: 8px solid goldenrod;
-}
-
-
-.interviewer_templates_container {
-  width: 80%;
-  border: 1px solid goldenrod;
-  border-radius: 5px;
-  margin: 0.5em;
 }
 
 .templateSetCard {
-  background-color: lightgoldenrodyellow;
-  border-left: 8px solid rgb(164, 164, 221);
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+  &:hover {
+    background-color: lightgray;
+  }
 }
-.templateSetCard:hover {
-  background-color: lavender;
+
+.detail_heading {
+  margin-top: 1em;
 }
+
+.interviewer_templates_container {
+  width: 80%;
+  border-radius: 5px;
+  margin: 0.5em;
+  background-color: lightcyan;
+  height: 35vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+}
+
+
 
 .templateCardHeading {
-  background-color: rgb(164, 164, 221);
   color: white;
-  padding: 00.5em;
+  padding: 0.5em;
+  width: inherit;
 }
 
-/* .templateQuestionSetCard {
-    /* border:1px solid blue; */
-/* border-left: 8px solid lightgray; */
-/*background-color: lightgreen;
-} */
+.interviewerBatchContainer {
+  width: 80%;
+  height: 30vh;
+  background-color: rgb(228, 209, 246);
+  overflow-x: auto;
+}

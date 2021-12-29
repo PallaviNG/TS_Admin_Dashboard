@@ -35,18 +35,26 @@ import NewInterviewer from './Components/MockInterviewComponents/NewInterviewer'
 import InterviewerList from './Components/MockInterviewComponents/InterviewerList';
 import TemplateAssignment from './Components/MockInterviewComponents/TemplateAssignment';
 import InterviewerDetail from "./Components/MockInterviewComponents/InterviewerDetail";
+import Charts from './Components/Charts';
+import { render } from '@testing-library/react';
+import SharableTemplateForm from "./Components/MockInterviewComponents/SharableTemplateForm";
+import AddStudentToBatch from "./Components/IndexPages/batch/AddStudentToBatch";
+import BatchDetails from './Components/IndexPages/batch/BatchDetails';
+import InterviewerBatchAssignment from "./Components/MockInterviewComponents/InterviewerBatchAssignment";
+import Interviewer_BatchList from "./Components/InterviewerComponents/Interviewer_BatchList";
 
 
 function App() {
   let userDetails = getUserDetails();
 
+  console.log(userDetails);
   return (
     <>
       <ToastContainer />
       {/* {userDetails=== null <Redirect to="/admin/register" /> } */}
       {userDetails ? <Navbar user={userDetails} /> : null}
 
-      {userDetails ? <Sidebar /> : null}
+      {userDetails ? <Sidebar user={userDetails} /> : null}
 
       {/* LOGIN-LOGOUT */}
       <Switch>
@@ -59,6 +67,7 @@ function App() {
             else return <Redirect to="/admin-login" />;
           }}
         />
+
 
         <Route path="/logout" exact render={(props) => {
           if (userDetails)
@@ -80,7 +89,7 @@ function App() {
           path="/mock/template/list"
           exact
           render={(props) => {
-            if (userDetails) return <TemplateList {...props} />;
+            if (userDetails&&userDetails.admin_role==="admin") return <TemplateList {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -123,6 +132,15 @@ function App() {
         />
 
         <Route
+          path="/mock/template/interviewer/batch/assignment/:id"
+          exact
+          render={(props) => {
+            if (userDetails) return <InterviewerBatchAssignment {...props} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+
+        <Route
           path="/mock/template/interviewer/new"
           exact
           render={(props) => {
@@ -150,12 +168,28 @@ function App() {
           }}
         />
 
+        <Route path="/mock/template/interviewer/share/form/:shareTemplate"
+          exact
+          render={(props) => {
+            if (userDetails) return <SharableTemplateForm {...props} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+
 
         <Route
           path="/page-not-found"
           exact
           render={(props) => {
             if (userDetails) return <PageNotFound {...props} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+        <Route
+          path="/charts"
+          exact
+          render={(props) => {
+            if (userDetails) return <Charts {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -175,6 +209,23 @@ function App() {
           exact
           render={(props) => {
             if (userDetails) return <EditBatch {...props} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+
+        <Route
+          path="/batch/add/student/:id"
+          exact
+          render={(props) => {
+            if (userDetails) return <AddStudentToBatch {...props} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+
+        <Route path="/single/batch/details/:id"
+          exact
+          render={(props) => {
+            if (userDetails) return <BatchDetails {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -271,6 +322,18 @@ function App() {
             else return <AdminLogin {...props} />;
           }}
         />
+
+      <Route
+          path="/interviewer/login/batch/list"
+          exact
+          render={(props) => {
+            if (userDetails&&userDetails.admin_role==="interviewer") return <Interviewer_BatchList {...props} user={userDetails} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+
+
+
       </Switch>
     </>
   );

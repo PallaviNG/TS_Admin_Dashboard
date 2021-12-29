@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Navbar({ user }) {
   let [searchToggle, setSearchToggle] = useState(false);
-  let [dropdownToggle, setDropdownToggle] = useState(false);
+  console.log(user)
   return (
     <>
       <nav className="navbar flex align-items-center">
@@ -52,19 +52,13 @@ function Navbar({ user }) {
             <img src={user1} className="avtar-image" alt="avatar-image" />
             <div className="logninMenu flex flex-direction-column align-items-center justify-content-center">
               <div className="flex align-items-center">
-                <p className="userName">{user.admin_name.toUpperCase()}</p>
-                <div className="faIcons caretDown dropdown flex justify-content-center align-items-center">
-                  <button onClick={() => {
-                    setDropdownToggle(!dropdownToggle);
-                  }}><i className="fa fa-caret-down" aria-hidden="true"></i></button>
+                <div className=" flex flex-direction-column align-items-center">
+                  <p className="userName font-small">{user.admin_name.toUpperCase()}</p>
+                  <span className="roleOfUser">{user.admin_role}</span></div>
+                <div>
+                  <Link to="/logout" className="dangerIcon ml-4" title="Logout"><i className="fa fa-2x fa-sign-out" aria-hidden="true"></i></Link>
                 </div>
-                {dropdownToggle === true ? ( 
-                  <div className="dropdown_content">
-                    <Link className="links" to="/logout">Logout</Link>
-                  </div>
-                ) : null}
               </div>
-              <span className="roleOfUser">{user.admin_role}</span>
             </div>
           </div>
         </div>

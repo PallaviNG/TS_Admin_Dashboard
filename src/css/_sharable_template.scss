@@ -1,0 +1,66 @@
+@import "_colors";
+.sTemplateContainer {
+  height: 100vh;
+  width: 60%;
+  border: 1px solid lightgray;
+  label {
+    width: 8em !important;
+    display: inline-block;
+  }
+  input,
+  select {
+    width: 70%;
+    border: 1px solid;
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+    padding: 0.5em 2em 0.5em 0.3em;
+    border-radius: 5px;
+    border: 1px solid dodgerblue;
+    &:hover {
+      box-shadow: inset 0px 0px 2px 2px lightblue;
+      cursor: text;
+    }
+  }
+}
+
+.sTemplate_header {
+  // columns: 2;
+  height: 25vh;
+  padding: 1em 2em;
+  background-color: rgb(215, 232, 238);
+
+  div {
+    margin-bottom: 0.5em;
+  }
+}
+
+.sTemplate_body {
+  height: 60vh;
+  overflow-x: auto;
+  padding: 0.5em 2em;
+  div {
+      margin-bottom: 0.8em;
+    label {
+      width: 100%;
+      display: inline-block;
+    }
+    input {
+      width: 100%;
+      margin: 0.5em 0 0.5em -0.08em;
+    }
+  }
+}
+
+.sTemplate_footer {
+  height: 15vh;
+  background-color: rgb(171, 241, 171);
+  div {
+    width: 40%;
+    span {
+      color: $primary-color;
+      &:hover {
+        color: $success-color;
+      }
+    }
+  }
+}

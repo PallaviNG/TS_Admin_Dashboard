@@ -77,6 +77,7 @@ function InterviewerDetail({ history, match }) {
                 }
             }
         });
+        console.log(initialValues);
     }, []);
 
     return (
@@ -84,48 +85,61 @@ function InterviewerDetail({ history, match }) {
             <div className="formComponent  flex flex-direction-column align-items-center justify-content-center">
                 <h4 className="text-align-center">Interviewer Details</h4>
                 <div className="interviewerDetailParentContainer flex flex-direction-column align-items-center">
-                    <p className="single_interviewer_details detail_heading" title="Interviewer Name" >
-                        {initialValues.interviewer_name}
-                    </p>
-                    <p className="single_interviewer_details sub_detail_heading" title="Email ID" >
-                        {initialValues.email_id}
-                    </p>
-                    <p className="single_interviewer_details" title="Phone Number" >
-                        {initialValues.phone_number}
-                    </p>
+                    <div className="details"><label>Name:</label>
+                        <p className="single_interviewer_details detail_heading" title="Interviewer Name" >
+                            {initialValues.interviewer_name}
+                        </p>
+                    </div>
 
-                    <div className="interviewer_templates_container flex flex-direction-column align-content-center" title="Template Assignment Set">
+                    <div className="details">
+                        <label>Email ID:</label>
+                        <p className="single_interviewer_details sub_detail_heading" title="Email ID" >
+                            {initialValues.email_id}
+                        </p>
+                    </div>
+
+                    <div className="details">
+                        <label>Phone Number:</label>
+                        <p className="single_interviewer_details" title="Phone Number" >
+                            {initialValues.phone_number}
+                        </p>
+                    </div>
+
+                    <div className="interviewer_templates_container flex flex-direction-column justify-content-center align-items-flex-start" title="Template Assignment Set">
+                        <div className="mxy-2">Template Details</div>
                         {initialValues.templateAssignmentFormsList.sort((a, b) => b.templateAssignmentDate - a.templateAssignmentDate).map((templateSet, tIndex) => {
                             return (
-                                <div className="templateSetCard" key={tIndex}>
-                                    <p className="templateCardHeading" title="Template Name">
+                                <div className="templateSetCard border-white" key={tIndex}>
+                                    <div className="templateCardHeading" title="Template Name">
                                         <Link to={`/mock/single/template/detail/${templateSet._id}`}>
                                             {tIndex + 1} {templateSet.template_title}
                                         </Link>
-                                        <div className="flex flex-no-wrap justify-content-flex-end align-content-center">
-                                            <span className="deleteIcon" onClick={() => removeAssignedTemplateFromList(tIndex)} title="Delete Template"><i className="fa fa-minus-circle" aria-hidden="true"></i></span>
-                                        </div>
-                                    </p>
-                                    <div className="templateQuestionSetCard" title="Question Answer Set">
-                                        {/* {templateSet.questionSets.map((questionSet, qIndex) => {
-                                    return (<div className="questionSetCard">
-                                        <p className="question_answer_set_details" title="Question">
-                                            {qIndex + 1} {questionSet.question}
-                                        </p>
-                                        <p className="question_answer_set_details" title="Answer">
-                                            {questionSet.answer}
-                                        </p>
-                                    </div>)
-                                })
-                                } */}
-                                        <div className="count_details">No. of Question Sets in Template: {templateSet.questionSets.length}</div>
                                     </div>
-
+                                    <div className="flex flex-no-wrap justify-content-flex-end align-content-center">
+                                        <span className="deleteIcon" onClick={() => removeAssignedTemplateFromList(tIndex)} title="Delete Template"><i className="fa fa-minus-circle" aria-hidden="true"></i></span>
+                                    </div>
                                 </div>)
                         })
                         }
                         <div className="count_details bg-info">Total No. of Templates: {initialValues.templateAssignmentFormsList.length}</div>
                     </div>
+
+                        {/* <div className="interviewerBatchContainer flex flex-direction-column align-content-center" title="Template Assignment Set">
+                            <div className="mxy-2">Batch Details</div>
+                            { initialValues.batches.map((batch, bIndex) => {
+                                    return (
+                                        <div key={bIndex}>
+                                            <div className="templateCardHeading primary-color" title="Template Name">
+
+                                                {bIndex + 1} {batch.batch_name}
+
+                                            </div>
+                                        </div>)
+                                })
+                            }
+                        </div> */}
+
+
                     <div className="form-buttons">
                         <button onClick={() => history.push("/mock/template/list")}>
                             <span className="backIcon"><i className="fa fa-hand-o-left" aria-hidden="true"></i> </span> Template List

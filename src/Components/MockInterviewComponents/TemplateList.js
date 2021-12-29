@@ -31,8 +31,6 @@ function TemplateList({ history }) {
             if (result === undefined) return false;
             dispatch(saveAllTemplateFormsAction(result.templateList));
         });
-
-
     }, []);
 
     return (
@@ -45,7 +43,7 @@ function TemplateList({ history }) {
 
                 {templateForms.length === 0 ? <div>No Templates Found</div>
                     : <>
-                        <div className="parent_card">
+                        <div className="parent_card template_parent_card">
                             <div className="card template_card flex flex-direction-column">
                                 <div className="flex justify-content-center templatePlusIcon" title="Create New Template">
                                     <Link to="/mock/template/new"><i className="fa fa-4x fa-plus" aria-hidden="true"></i></Link>

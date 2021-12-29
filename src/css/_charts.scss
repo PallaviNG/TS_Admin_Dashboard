@@ -1,0 +1,18 @@
+@import "_colors";
+.xy_axes {
+    height: 50vh;
+    width: 80%;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    padding: 1em;
+    padding-bottom: 0;
+}
+
+.bars {
+    height: 40vh;
+    width: 1em;
+    border:1px solid $success-color;
+    padding:0.5em;
+    margin: 1em;
+    margin-bottom: 0;
+}

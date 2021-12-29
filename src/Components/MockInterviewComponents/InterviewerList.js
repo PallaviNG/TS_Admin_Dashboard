@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Component, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -6,6 +6,7 @@ import {
   getInterviewerList,
   removeInterviewer,
 } from "./../../Service/interviewerService";
+import SharableTemplateForm from './SharableTemplateForm';
 import {
   deleteInterviewerAction,
   saveAllInterviewersAction,
@@ -41,9 +42,9 @@ function InterviewerList({ history }) {
     <div className="content">
       <div className="formComponent">
         <h4 className="text-align-center">List of Interviewers
-        <strong onClick={() => history.push("/mock/template/interviewer/new")} title="Click to Add New Interviewer!" className="createIcon"><i className="fa fa-plus" aria-hidden="true"></i></strong>
+          <strong onClick={() => history.push("/mock/template/interviewer/new")} title="Click to Add New Interviewer!" className="createIcon"><i className="fa fa-plus" aria-hidden="true"></i></strong>
         </h4>
-        {interviewerList.length === 0 ? <div>No Interviewers Found</div> 
+        {interviewerList.length === 0 ? <div>No Interviewers Found</div>
           :
           <>
             <div className=" flex flex-wrap align-items-center justify-content-center">
@@ -81,9 +82,11 @@ function InterviewerList({ history }) {
                                   className="interviewer_template_details flex align-content-center"
                                   title="Template Name"
                                 >
-                                  <Link to={`/mock/single/template/detail/${template._id}`}>
+                                  {/* <button type="link" onClick={<SharableTemplateForm templateDetails={template} />} > */}
+                                  <Link to={`/mock/template/interviewer/share/form/${template}`}>
                                     {tIndex + 1} {template.template_title}
                                   </Link>
+                                  {/* </button> */}
                                 </p>
                               </div>
                             );
@@ -92,7 +95,7 @@ function InterviewerList({ history }) {
                     </div>
 
                     <div className="templateIcons">
-                      <span
+                      {/* <span
                         className="assignIcon"
                         onClick={() =>
                           history.push("/mock/template/interviewer/new")
@@ -103,10 +106,16 @@ function InterviewerList({ history }) {
                           className="fa fa-2x fa-arrow-circle-o-left"
                           aria-hidden="true"
                         ></i>
-                      </span>
+                      </span> */}
+
+                      <span className="assignIcon font-larger" 
+                      onClick={() =>
+                        history.push(`/mock/template/interviewer/batch/assignment/${interviewer._id}`)
+                      }
+                      title="Assign New Batch"><i className="fa fa-user-plus" aria-hidden="true"></i></span>
 
                       <span className="assignIcon"
-                        onClick={() => history.push("/mock/template/list") }
+                        onClick={() => history.push("/mock/template/list")}
                         title="Back to Template List">
                         <i className="fa fa-2x fa-list-alt" aria-hidden="true"></i>
                       </span>

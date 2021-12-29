@@ -1,18 +1,53 @@
+import React, { useState, useEffect } from "react";
 import { Field, Form, Formik } from "formik";
-import React from "react";
-import { useDispatch } from "react-redux";
+import { batch, useDispatch, useSelector } from "react-redux";
 import { addNewInterviewerAction } from './../../redux/action/InterviewerAction';
 import { createNewInterviewer } from "../../Service/interviewerService";
+import { getBatchList } from "../../Service/batchService";
+import { saveAllBatchDetailsAction } from "../../redux/action/BatchAction";
 
 
 function NewInterviewer({ history }) {
+  let batchList = useSelector((state) => state.batchDetails.batches);
   let dispatch = useDispatch();
   let initialValues = {
     interviewer_name: "",
     email_id: "",
+    batch_id: "",
+    batch_name: "",
     templateAssignmentFormsList: []
   };
 
+  let [batchID, setBatchID] = useState("");
+  let [batchNAME, setBatchNAME] = useState("");
+
+  let [batchOptions, setBatchOptions] = useState([]);
+
+  useEffect(() => {
+    if (batchList.length === 0) {
+      getBatchList("get-batch-list").then((result) => {
+        if (result === undefined) return false;
+        dispatch(saveAllBatchDetailsAction(result.batchList));
+      });
+    }
+
+    console.log(batchList);
+    batchOptions = [];
+    batchOptions.push({ value: 0, name: "-Select Batch-" });
+    if (batchList.length === 0)
+      batchOptions.push({ value: undefined, name: "No Batch found!" });
+    else {
+      batchList.forEach((batch) => {
+        batchOptions.push({
+          value: batch._id,
+          name: batch.batch_name,
+        });
+      });
+    }
+    setBatchOptions([]);
+    console.log(batchOptions);
+    setBatchOptions([...batchOptions]);
+  }, []);
 
   let onSubmit = (values, onSubmitProps) => {
     console.log(values);
@@ -20,6 +55,8 @@ function NewInterviewer({ history }) {
       interviewer_name: values.interviewer_name,
       email_id: values.email_id,
       phone_number: values.phone_number,
+      batch_id: batchID,
+      batch_name: batchNAME,
       templateAssignmentForms: [],
     };
 
@@ -30,6 +67,22 @@ function NewInterviewer({ history }) {
       onSubmitProps.resetForm();
     });
   };
+
+  let changeBatchName = (event) => {
+    console.log(event.target.value);
+    setBatchID(event.target.value);
+    let _batchID = event.target.value;
+    console.log(_batchID);
+    var singleBatchOption = batchOptions.filter(
+      (batch) => batch.value === _batchID
+    );
+
+    if (singleBatchOption.length > 0) {
+      console.log(singleBatchOption[0].name);
+      setBatchNAME('');
+      setBatchNAME(singleBatchOption[0].name);
+    }
+  }
 
   return (
     <div className="content">
@@ -67,6 +120,34 @@ function NewInterviewer({ history }) {
                 placeholder="Phone Number"
               />
             </div>
+
+            <div className="form-group">
+              <Field
+                name="batch_id"
+                as="select"
+                title="Batch ID"
+                onChange={(event) => {
+                  setBatchID(event.target.value);
+                  changeBatchName(event);
+                }}
+                value={batchID}
+              >
+                {batchOptions.map((batch, index) => (
+                  <option key={index} value={batch.value}>
+                    {batch.name}
+                  </option>
+                ))}
+              </Field>
+            </div>
+
+            <Field
+              name="batch_name"
+              readOnly
+              type="hidden"
+              // className="setInvisible"
+              placeholder="Batch Name"
+              value={batchNAME}
+            />
 
             <div className="form-buttons">
               <button type="submit">SAVE</button>

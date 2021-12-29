@@ -45,8 +45,7 @@ function NewTrainer({ history }) {
           dispatch(saveAllTrainerDetailsAction(result.trainerList));
         });
       }
-  })
-
+  },[trainerList]);
 
   return (
     <div className="content">

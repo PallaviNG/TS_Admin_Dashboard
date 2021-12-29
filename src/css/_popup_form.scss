@@ -1,13 +1,18 @@
+@import "_colors";
 .pop-up-container {
-    height: 20vh;
+    height: 15vh;
     width: 30%;
     border: 1px solid lightblue;
-    // margin: 0.8em;
+    padding-bottom: 0;
+    .templateIcons {
+        background-color: $info-color;
+        margin-bottom: 0;
+    }
+    &:hover {
+        box-shadow: 0px 0px 1px 2px skyblue;
+    }
 }
 
-.pop-up-container:hover {
-    box-shadow: 0px 0px 3px 2px skyblue;
-}
 
 .pop-up-selector {
     padding:1em;

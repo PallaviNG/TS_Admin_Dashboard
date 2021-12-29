@@ -136,7 +136,7 @@ function TemplateAssignment({ history, match }) {
         {templateDetails ? (
           <h5>Template Name: {templateDetails.template_title}</h5>
         ) : null}
-        <div className="pop-up-container">
+        <div className="pop-up-container flex flex-direction-column align-content-center mt-3">
           <Formik initialValues={initialValues} onSubmit={onSubmit}>
             <Form>
               <div className="pop-up-selector flex justify-content-center">
@@ -155,18 +155,11 @@ function TemplateAssignment({ history, match }) {
                 </Field>
               </div>
 
-              <div className="templateIcons bg-info">
-                {/* <button onClick={() => history.push("/mock/template/list")}>
-                  Back to Template List
-                </button> */}
-                {/* {interviewerList.length === 0 ?
-                  <button type="submit" disabled>SHARE </button> :
-                  <button type="submit">SHARE </button>
-                } */}
+              <div className="templateIcons">
+                
                 <Link to="/mock/template/list"><span className="assignIcon" title="Back to Template List"><i className="fa fa-list-alt" aria-hidden="true"></i></span></Link>
                 <Link to="/mock/template/interviewer/new"><span className="assignIcon" title="Add New Interviewer"><i className="fa fa-user-plus" aria-hidden="true"></i></span></Link>
-                <button type="submit">SHARE </button>
-                {/* <span className="assignIcon" title="Share"><i className="fa fa-share-square-o" aria-hidden="true"></i></span> */}
+                <button type="submit" title="Share"><i className="fa fa-share" aria-hidden="true"></i></button>
               </div>
             </Form>
           </Formik>

@@ -2,8 +2,12 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { removeStudent } from "../../Service/studentService";
-import { deleteMockStudentAction, saveAllMockStudentDetailsAction } from "../../redux/action/MockStudentAction";
-import { getStudentList } from './../../Service/studentService';
+import {
+  deleteMockStudentAction,
+  saveAllMockStudentDetailsAction,
+} from "../../redux/action/MockStudentAction";
+import { getStudentList } from "./../../Service/studentService";
+import { Link } from 'react-router-dom';
 
 function ListStudents({ history }) {
   let studentList = useSelector((state) => state.studentDetails.students);
@@ -22,64 +26,68 @@ function ListStudents({ history }) {
     });
   };
 
-
   useEffect(() => {
     getStudentList("get-student-list").then((result) => {
       if (result === undefined) return false;
       dispatch(saveAllMockStudentDetailsAction(result.studentList));
     });
   }, []);
-  
+
   return (
     <div className="content">
       <div className="formComponent">
         <h4 className="text-align-center">List of Students</h4>
-        <div className="parent_card">
-          {studentList.map((student, index) => {
-            return (
-              <div
-                className="card student_card flex flex-direction-column"
-                key={index}
-              >
-                <p className="batch_details" title="Student Name">
-                  {student.student_name}
-                </p>
-                <p className="batch_details" title="Phone Number">
-                  {student.phone_number}
-                </p>
-                <p className="batch_details" title="Email ID">
-                  {student.email_id}
-                </p>
-                <p className="batch_details" title="Batch Name">
-                  {student.batch_name}
-                </p>
-                <p className="batch_details" title="Course Name">
-                  {student.course_name}
-                </p>
-                <p className="batch_details" title="Fees Details">
-                  {student.fees_details}
-                </p>
 
-                <div className="form-buttons">
-                  <button onClick={() => deleteStudent(index, student._id)}>
-                    DELETE
-                  </button>
-                  {/* <button
-                    className="edit"
-                    onClick={() => {
-                      history.push("/student/edit/" + batch._id);
-                    }}
-                  >
-                    EDIT
-                  </button> */}
-                </div>
-              </div>
-            );
-          })}
+        <div className="card student_card flex align-items-center">
+          <Link to="/mock/student/new">
+            <span>
+              <i
+                className="fa fa-plus-circle font-larger primary-color"
+                aria-hidden="true"
+              ></i>
+            </span>
+          </Link>
         </div>
+        {studentList.length === 0 ? (
+          <div>Student List is Empty</div>
+        ) : (
+          <>
+            <div className="parent_card">
+              {studentList.map((student, index) => {
+                  return (
+                    <div
+                      className="card student_card flex flex-direction-column"
+                      key={index}
+                    >
+                      <p className="batch_details bg-transparent" title="Student Name">
+                        {student.student_name}
+                      </p>
+                      <p className="batch_details bg-transparent" title="Phone Number">
+                        {student.phone_number}
+                      </p>
+                      <p className="batch_details bg-transparent" title="Email ID">
+                        {student.email_id}
+                      </p>
+                      <p className="batch_details bg-transparent" title="Fees Details">
+                        {student.fees_details}
+                      </p>
+
+                      <div className="form-buttons">
+                        <button
+                          onClick={() => deleteStudent(index, student._id)}
+                        >
+                          DELETE
+                        </button>
+                      </div>
+                    </div>
+                  );
+                }) //map
+              }
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
 }
-
 export default ListStudents;

@@ -16,6 +16,16 @@ export const getBatchList = async (url) => {
     commonError(ex);
   }
 };
+
+export const getBatchByID = async (url, _id) => {
+  try {
+    let { data } = await post(base_url + url, { _id: _id });
+    return data;
+  } catch (error) {
+    commonError(error);
+  }
+}
+
 export const createNewBatch = async (url, sendData) => {
   try {
     let { data } = await post(base_url + url, sendData);
@@ -48,6 +58,15 @@ export const updateBatch = async (url, sendData) => {
   try {
     let { data } = await put(base_url + url, sendData);
     toast.success("Batch Record Updated Successfully.");
+    return data;
+  } catch (error) {
+    commonError(error);
+  }
+};
+
+export const updateBatchStudent = async (url, sendData) => {
+  try {
+    let { data } = await put(base_url + url, sendData);
     return data;
   } catch (error) {
     commonError(error);

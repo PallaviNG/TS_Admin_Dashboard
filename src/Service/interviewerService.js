@@ -51,10 +51,20 @@ export const removeInterviewer = async (url, _id) => {
 export const updateInterviewerByID = async (url, sendData) => {
     try {
         let { data } = await put(base_url + url, sendData);
-        // if (sendData._id === 0) { toast.warning("Select Interviewer"); return false; }
         if (data.modifiedCount > 0 && data.matchedCount === 1)
             toast.success("Interviewer Record Updated Successfully.");
 
+        return data;
+    } catch (error) {
+        commonError(error);
+    }
+};
+
+export const updateInterviewerBatches = async (url, sendData) => {
+    try {
+        let { data } = await put(base_url + url, sendData);
+        if (data.modifiedCount > 0 && data.matchedCount === 1)
+            toast.success("Batch Assigned to Interviewer");
         return data;
     } catch (error) {
         commonError(error);

@@ -80,7 +80,7 @@
 }
 
 .logninMenu{
-  width: 10em;
+  width: 15em;
   /* border:1px solid blue; */
   display: flex;
   flex-direction: column;  
@@ -88,6 +88,7 @@
 
 .userName {
   margin-bottom: 5px;
+  width: 100%;
   margin-right:8px;
   color: white;
 }

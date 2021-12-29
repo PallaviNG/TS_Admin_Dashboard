@@ -7,6 +7,14 @@
       cursor: pointer;
     }
   }
+
+  .dangerIcon  {
+    color: darkred;
+    &:hover {
+      color: red;
+      cursor: pointer;
+    }
+  }
   
   .editIcon{
     color: darkgray;

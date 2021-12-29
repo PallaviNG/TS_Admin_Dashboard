@@ -3,10 +3,12 @@
 @import "_borders";
 @import "_scrollbar";
 @import "_batches";
+@import "_charts";
 @import "_content";
 @import "_courses";
 @import "_dynamicComponents";
 @import "_flex";
+@import "_fonts";
 @import "_icons";
 @import "_interviewer";
 @import "_loader";
@@ -20,6 +22,8 @@
 @import "_colors";
 @import "_margin_padding";
 @import "_text_transform";
+@import "_text_color";
+@import "_sharable_template";
 
 * {
   margin: 0px;
@@ -27,6 +31,10 @@
   box-sizing: border-box;
 }
 
-$primary-color: rgb(52, 152, 219);
-$success-color: rgb(35, 155, 86);
-$text-light-color: rgb(105, 107, 103);
+.width-100 {
+  width: 100%;
+}
+
+.width-inherit {
+  width: inherit;
+}

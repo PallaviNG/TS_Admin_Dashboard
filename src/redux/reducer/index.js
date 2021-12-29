@@ -6,6 +6,7 @@ import { TemplateReducer } from './TemplateReducer';
 import { CourseReducer } from './CourseReducer';
 import { NotificationReducer } from './NotificationReducer';
 import { InterviewerReducer } from './InterviewerReducer';
+import { interviewerBatchReducer } from "./Interviewer_BatchReducer";
 
 let reducer = combineReducers({
   batchDetails: batchReducer,
@@ -14,7 +15,8 @@ let reducer = combineReducers({
   templateDetails: TemplateReducer,
   courseDetails: CourseReducer,
   notificationDetails: NotificationReducer,
-  template_interviewerDetails:InterviewerReducer
+  template_interviewerDetails:InterviewerReducer,
+  interviewer_batchListDetails:interviewerBatchReducer
 });
 
 export default reducer;
