@@ -24,29 +24,24 @@ function NewInterviewer({ history }) {
   let [batchOptions, setBatchOptions] = useState([]);
 
   useEffect(() => {
-    if (batchList.length === 0) {
-      getBatchList("get-batch-list").then((result) => {
-        if (result === undefined) return false;
-        dispatch(saveAllBatchDetailsAction(result.batchList));
-      });
-    }
-
-    console.log(batchList);
-    batchOptions = [];
-    batchOptions.push({ value: 0, name: "-Select Batch-" });
-    if (batchList.length === 0)
-      batchOptions.push({ value: undefined, name: "No Batch found!" });
-    else {
-      batchList.forEach((batch) => {
-        batchOptions.push({
-          value: batch._id,
-          name: batch.batch_name,
+    getBatchList("get-batch-list").then((result) => {
+      if (result === undefined) return false;
+      dispatch(saveAllBatchDetailsAction(result.batchList));
+      batchOptions = [];
+      batchOptions.push({ value: 0, name: "-Select Batch-" });
+      if (batchList.length === 0)
+        batchOptions.push({ value: undefined, name: "No Batch found!" });
+      else {
+        batchList.forEach((batch) => {
+          batchOptions.push({
+            value: batch._id,
+            name: batch.batch_name,
+          });
         });
-      });
-    }
-    setBatchOptions([]);
-    console.log(batchOptions);
-    setBatchOptions([...batchOptions]);
+      }
+      setBatchOptions([]);
+      setBatchOptions([...batchOptions]);
+    });
   }, []);
 
   let onSubmit = (values, onSubmitProps) => {

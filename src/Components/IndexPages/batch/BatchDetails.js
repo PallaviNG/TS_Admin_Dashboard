@@ -66,7 +66,7 @@ function BatchDetails({ history, match }) {
                 <div key={sIndex}>
                   <Link
                     className="primary-color px-2"
-                    to="/single/student/details"
+                    to={`/single/student/details/${student._id}`}
                     title="Click to view Student Details"
                   >
                     <p className="my-1 mxy-2"><span className="pl-1">{sIndex + 1}

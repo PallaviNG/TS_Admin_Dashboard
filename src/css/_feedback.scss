@@ -1,0 +1,55 @@
+.fParentContainer {
+    position: fixed;
+    z-index:1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.feedbackPopupContainer {
+    height: 40vh;
+    width: 35%;
+    border: lightgray;
+    border-radius: 5px;
+    position: fixed;
+    top:23%;
+    left: 40%;
+    background-color: lightcyan;
+    opacity: 1;
+    padding: 1.5em;
+    transform: scale(0.9);
+    transition: all 1s ease-in-out;
+    .feedbackHeading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h4{
+            width: 90%;
+            display: flex;
+            justify-content: center;
+        }
+        .feedbackChild{
+            width: 10%;
+            display: flex;
+            button:hover {
+                background-color: red;
+            }
+        }
+    }
+}
+
+.fPIcons {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    button {
+        img {
+            height: 1.5em;
+            width: 1.5em;
+        }
+    }
+}

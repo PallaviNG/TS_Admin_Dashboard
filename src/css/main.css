@@ -1104,6 +1104,84 @@ button:active {
   font-style: oblique 20deg 40deg;
 }
 
+.fParentContainer {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.feedbackPopupContainer {
+  height: 40vh;
+  width: 35%;
+  border: lightgray;
+  border-radius: 5px;
+  position: fixed;
+  top: 23%;
+  left: 40%;
+  background-color: lightcyan;
+  opacity: 1;
+  padding: 1.5em;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.feedbackPopupContainer .feedbackHeading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.feedbackPopupContainer .feedbackHeading h4 {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.feedbackPopupContainer .feedbackHeading .feedbackChild {
+  width: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.feedbackPopupContainer .feedbackHeading .feedbackChild button:hover {
+  background-color: red;
+}
+
+.fPIcons {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.fPIcons button img {
+  height: 1.5em;
+  width: 1.5em;
+}
+
 .deleteIcon {
   color: darkred;
 }
@@ -1184,8 +1262,8 @@ button:active {
 }
 
 .interviewer_card {
-  width: 29%;
-  height: 62vh;
+  width: 26%;
+  height: 60vh;
   border: 1px solid lightslategray;
   border-top: 8px solid gray;
   padding-top: 1em;
@@ -1209,9 +1287,9 @@ button:active {
   border: 1px solid lightgray;
   -webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
-  height: 40vh;
+  height: 32vh;
   padding: 0.5em 0;
-  margin-top: 0.5em;
+  margin: 0.5em 0;
   overflow-x: auto;
 }
 
@@ -1269,22 +1347,6 @@ button:active {
   border-radius: 5px;
 }
 
-.templateSetCard {
-  width: 90%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.templateSetCard:hover {
-  background-color: lightgray;
-}
-
 .detail_heading {
   margin-top: 1em;
 }
@@ -1298,16 +1360,29 @@ button:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   overflow-x: auto;
 }
 
-.templateCardHeading {
+.interviewer_templates_container .templateSetCard {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.interviewer_templates_container .templateSetCard:hover {
+  background-color: lightgray;
+}
+
+.interviewer_templates_container .templateSetCard .templateCardHeading {
   color: white;
   padding: 0.5em;
   width: inherit;
@@ -1317,7 +1392,24 @@ button:active {
   width: 80%;
   height: 30vh;
   background-color: #e4d1f6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   overflow-x: auto;
+  padding: 1em 3em;
+}
+
+.interviewerBatchContainer .interviewerBatchCardHeading {
+  padding: 0.5em;
+  width: 100%;
+  border: 1px solid lightgray;
+}
+
+.interviewerBatchContainer .interviewerBatchCardHeading:hover {
+  background-color: lightcyan;
 }
 
 .loaderComponent {
@@ -1664,6 +1756,46 @@ button:active {
   width: 22%;
   border: 1px solid burlywood;
   border-top: 5px solid brown;
+}
+
+.studentDetailsContainer {
+  height: 60vh;
+  width: 50%;
+  padding: 2em 1em;
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+.studentDetailsContainer .studentData {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5em;
+}
+
+.studentDetailsContainer .studentData label {
+  width: 40%;
+  display: inline-block;
+}
+
+.studentDetailsContainer .studentData div {
+  width: 60%;
+  padding: 0.8em 1em;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.studentDetailsContainer button {
+  cursor: pointer;
+  padding: 0.8em 1em;
+}
+
+.studentDetailsContainer button:hover {
+  background-color: #0275d8;
 }
 
 .trainer_card {

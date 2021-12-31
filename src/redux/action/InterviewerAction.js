@@ -5,6 +5,13 @@ export const saveAllTemplateFormAssignmentAction = (templateFormSet) => {
     };
 };
 
+export const saveAllBatchesOfInterviewerAction = (batchList) => {
+    return {
+        type:"SAVE_ALL_BATCHES_OF_INTERVIEWER",
+        payload:batchList
+    };
+};
+
 export const saveAllInterviewersAction = (interviewerList) => {
     return {
         type: "SAVE_ALL_INTERVIEWER_DETAILS",

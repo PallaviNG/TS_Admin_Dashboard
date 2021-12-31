@@ -108,11 +108,11 @@ function InterviewerList({ history }) {
                         ></i>
                       </span> */}
 
-                      <span className="assignIcon font-larger" 
+                      <span className="assignIcon" 
                       onClick={() =>
                         history.push(`/mock/template/interviewer/batch/assignment/${interviewer._id}`)
                       }
-                      title="Assign New Batch"><i className="fa fa-user-plus" aria-hidden="true"></i></span>
+                      title="Assign New Batch"><i className="fa font-size-x-large fa-user-plus" aria-hidden="true"></i></span>
 
                       <span className="assignIcon"
                         onClick={() => history.push("/mock/template/list")}

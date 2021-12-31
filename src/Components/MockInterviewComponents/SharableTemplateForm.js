@@ -1,16 +1,13 @@
 import { Field, Form, Formik } from "formik";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import FormControl from "./../forms/FormControl";
 import { useDispatch } from "react-redux";
-import { createNewTemplate, getTemplateList } from "./../../Service/templateService";
-import { addNewTemplateAction, deleteQuestionSet } from "./../../redux/action/TemplateAction";
 import { getStudentByID, getStudentList } from "../../Service/studentService";
 import { saveAllMockStudentDetailsAction } from './../../redux/action/MockStudentAction';
 
 
 function SharableTemplateForm({ history, match }) {
-  console.log(match.params.shareTemplate);
+  // console.log(match.params.shareTemplate);
 
   let mockStudentsList = useSelector((state) => state.studentDetails.students);
 
@@ -18,7 +15,6 @@ function SharableTemplateForm({ history, match }) {
 
   let [studentID, setStudentID] = useState();
   let [studentListOptions, setStudentListOptions] = useState([]);
-  let [studentsList, setStudentsList] = useState([]);
 
   let [studentEmailID, setStudentEmailID] = useState("");
   let [studentPhoneNumber, setStudentPhoneNumber] = useState("");
@@ -27,20 +23,19 @@ function SharableTemplateForm({ history, match }) {
     getStudentList("get-student-list").then(
       (result) => {
         if (result === undefined) return false;
-        // studentsList = result.studentList;
-        // setStudentsList([...studentsList]);
         dispatch(saveAllMockStudentDetailsAction(result.studentList));
+
+        studentListOptions = [];
+        studentListOptions.push({ value: 0, name: "-Select Student-" });
+        if (mockStudentsList.length === 0)
+          studentListOptions.push({ value: undefined, name: "No Student found!" });
+        else {
+          mockStudentsList.forEach(student => {
+            studentListOptions.push({ value: student._id, name: student.student_name });
+          });
+        }
+        setStudentListOptions([...studentListOptions]);
       });
-    studentListOptions = [];
-    studentListOptions.push({ value: 0, name: "-Select Student-" });
-    if (mockStudentsList.length === 0)
-      studentListOptions.push({ value: undefined, name: "No Student found!" });
-    else {
-      mockStudentsList.forEach(student => {
-        studentListOptions.push({ value: student._id, name: student.student_name });
-      });
-    }
-    setStudentListOptions([...studentListOptions]);
   }, []);
 
 

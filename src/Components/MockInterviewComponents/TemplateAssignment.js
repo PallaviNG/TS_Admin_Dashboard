@@ -58,30 +58,27 @@ function TemplateAssignment({ history, match }) {
         }
       }
     });
-  },[]);
-  // }, [templateDetails, templates]);
+  }, []);
 
   useEffect(() => {
     getInterviewerList("get-interviewer-list").then((result) => {
       if (result === undefined) return false;
       dispatch(saveAllInterviewersAction(result.interviewerList));
-    });
-
-    interviewerOptions = [];
-    interviewerOptions.push({ value: 0, name: "-Select Interviewer-" });
-    if (interviewerList.length === 0)
-      interviewerOptions.push({ value: undefined, name: "No Interviewer found!" });
-    else {
-      interviewerList.forEach((interviewer) => {
-        interviewerOptions.push({
-          value: interviewer._id,
-          name: interviewer.interviewer_name,
+      interviewerOptions = [];
+      interviewerOptions.push({ value: 0, name: "-Select Interviewer-" });
+      if (interviewerList.length === 0)
+        interviewerOptions.push({ value: undefined, name: "No Interviewer found!" });
+      else {
+        interviewerList.forEach((interviewer) => {
+          interviewerOptions.push({
+            value: interviewer._id,
+            name: interviewer.interviewer_name,
+          });
         });
-      });
-    }
-    setInterviewerOptions([...interviewerOptions]);
-  },[]);
-  // }, [interviewerOptions, interviewerList]);
+      }
+      setInterviewerOptions([...interviewerOptions]);
+    });
+  }, []);
 
 
   let onSubmit = () => {
@@ -156,7 +153,7 @@ function TemplateAssignment({ history, match }) {
               </div>
 
               <div className="templateIcons">
-                
+
                 <Link to="/mock/template/list"><span className="assignIcon" title="Back to Template List"><i className="fa fa-list-alt" aria-hidden="true"></i></span></Link>
                 <Link to="/mock/template/interviewer/new"><span className="assignIcon" title="Add New Interviewer"><i className="fa fa-user-plus" aria-hidden="true"></i></span></Link>
                 <button type="submit" title="Share"><i className="fa fa-share" aria-hidden="true"></i></button>

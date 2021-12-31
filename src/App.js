@@ -36,18 +36,18 @@ import InterviewerList from './Components/MockInterviewComponents/InterviewerLis
 import TemplateAssignment from './Components/MockInterviewComponents/TemplateAssignment';
 import InterviewerDetail from "./Components/MockInterviewComponents/InterviewerDetail";
 import Charts from './Components/Charts';
-import { render } from '@testing-library/react';
 import SharableTemplateForm from "./Components/MockInterviewComponents/SharableTemplateForm";
 import AddStudentToBatch from "./Components/IndexPages/batch/AddStudentToBatch";
 import BatchDetails from './Components/IndexPages/batch/BatchDetails';
 import InterviewerBatchAssignment from "./Components/MockInterviewComponents/InterviewerBatchAssignment";
 import Interviewer_BatchList from "./Components/InterviewerComponents/Interviewer_BatchList";
+import MockStudentDetails from "./Components/MockInterviewComponents/MockStudentDetails";
 
 
 function App() {
   let userDetails = getUserDetails();
 
-  console.log(userDetails);
+  // console.log(userDetails);
   return (
     <>
       <ToastContainer />
@@ -89,7 +89,7 @@ function App() {
           path="/mock/template/list"
           exact
           render={(props) => {
-            if (userDetails&&userDetails.admin_role==="admin") return <TemplateList {...props} />;
+            if (userDetails && userDetails.admin_role === "admin") return <TemplateList {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -313,6 +313,13 @@ function App() {
           }}
         />
 
+        <Route path="/single/student/details/:id" exact
+          render={(props) => {
+            if (userDetails) return <MockStudentDetails {...props} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+
         <Route path="/admin/register" exact component={AdminRegister} />
 
         <Route
@@ -323,11 +330,11 @@ function App() {
           }}
         />
 
-      <Route
+        <Route
           path="/interviewer/login/batch/list"
           exact
           render={(props) => {
-            if (userDetails&&userDetails.admin_role==="interviewer") return <Interviewer_BatchList {...props} user={userDetails} />;
+            if (userDetails && userDetails.admin_role === "interviewer") return <Interviewer_BatchList {...props} user={userDetails} />;
             else return <Redirect to="/admin-login" />;
           }}
         />

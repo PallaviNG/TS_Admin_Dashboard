@@ -21,28 +21,28 @@ function ContentArea({ user }) {
   );
   let dispatch = useDispatch();
 
-  console.log(user);
+  // console.log(user);
 
   let [interviewerDetails, setInterviewerDetails] = useState({});
   let [interviewerBatches, setInterviewerBatches] = useState([]);
 
   useEffect(() => {
     if (user.admin_role === "interviewer") {
-      console.log("Interviewer");
+      // console.log("Interviewer");
       let _interviewerID = user.id;
       getInterviewerDetailsByID("get-interviewer-by-id", _interviewerID).then((result) => {
         if (result === undefined) return false;
         interviewerDetails = result.interviewers[0];
         setInterviewerDetails({ ...interviewerDetails });
-        console.log(interviewerDetails);
+        // console.log(interviewerDetails);
         interviewerBatches = [];
         if (interviewerDetails !== {}) {
           interviewerBatches = interviewerDetails.batches;
           setInterviewerBatches([...interviewerBatches]);
         }
       });
-      console.log(interviewerBatches);
-      console.log(interviewerDetails);
+      // console.log(interviewerBatches);
+      // console.log(interviewerDetails);
     }
   }, [user.admin_role]);
 

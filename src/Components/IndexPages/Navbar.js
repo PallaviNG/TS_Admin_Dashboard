@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 function Navbar({ user }) {
   let [searchToggle, setSearchToggle] = useState(false);
-  console.log(user)
   return (
     <>
       <nav className="navbar flex align-items-center">

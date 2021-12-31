@@ -1,6 +1,7 @@
 let initState = {
     interviewers: [],
-    templateAssignments: []
+    templateAssignments: [],
+    batchesOfInterviewer:[]
   };
   
   export const InterviewerReducer = (state = initState, action) => {
@@ -21,6 +22,9 @@ let initState = {
   
       case "SAVE_ALL_TEMPLATE_ASSIGNMENT_FORMS":
         return { ...state, templateAssignments: payload };
+
+      case "SAVE_ALL_BATCHES_OF_INTERVIEWER":
+        return {...state, batchesOfInterviewer:payload}
   
       case "DELETE_TEMPLATE_ASSIGNMENT":
         console.log(state.templateAssignments);
