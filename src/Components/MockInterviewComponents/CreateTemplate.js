@@ -1,4 +1,6 @@
 import React, {  useEffect } from "react";
+import preview_icon from "../../assets/images/buttonIcons/preview_template.png";
+import save_icon from "../../assets/images/buttonIcons/backup.png"
 import { Formik, Form } from "formik";
 import FormControl from "./../forms/FormControl";
 import { useDispatch } from "react-redux";
@@ -89,11 +91,10 @@ function CreateTemplate({ history }) {
                   })}
                 </div>
               </div>
-              <div className="form-buttons">
-                <button type="submit">SAVE</button>
-                <button onClick={() => history.push("/mock/template/preview")}>
-                  PREVIEW
-                </button>
+              <div className="create_template_icons">
+                <button type="submit" className="bg-transparent border-none" title="Save"><img src={save_icon} /></button>
+                <button className='mr-4' title='Preview Template' className="bg-transparent border-none" onClick={() => history.push("/mock/template/preview")}><img src={preview_icon} /></button>
+              
               </div>
             </div>
           </Form>

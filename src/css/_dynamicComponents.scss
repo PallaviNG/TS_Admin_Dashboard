@@ -102,6 +102,22 @@
   border: 1px solid $success-color;
 }
 
+.create_template_icons {
+  width: 50%;
+    display: flex;
+    align-self: center;
+    justify-content: space-around;
+    align-items: center;
+    button {
+        cursor: pointer;
+        img {
+            height: 2.5em;
+            width: 2.5em;
+            filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+        }
+      }
+}
+
 .dc {
   width: 80%;
 }

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { saveAllBatchDetailsAction } from "../../../redux/action/BatchAction";
 import { getBatchList } from "./../../../Service/batchService";
 import { Link } from "react-router-dom";
 
 function BatchDetails({ history, match }) {
-  let batchList = useSelector((state) => state.batchDetails.batches);
-
   let [initialValues, setInitialValues] = useState({
     batch_name: "",
     students: [],
@@ -19,10 +17,8 @@ function BatchDetails({ history, match }) {
   useEffect(() => {
     getBatchList("get-batch-list").then((result) => {
       if (result === undefined) return false;
-      // console.log(result);
       batches = [];
       batches = result.batchList;
-      // console.log(batches);
       setBatches([...batches]);
       dispatch(saveAllBatchDetailsAction(result.batchList));
 
@@ -30,7 +26,6 @@ function BatchDetails({ history, match }) {
         var singleBatchDetails = batches.filter(
           (batch) => batch._id === match.params.id
         );
-        // console.log(singleBatchDetails);
         if (singleBatchDetails.length === 0) {
           toast.error("No Batch Found");
           history.replace("/batch/list");
@@ -47,7 +42,6 @@ function BatchDetails({ history, match }) {
     <div className="content">
       <div className="formComponent singleBatchParentContainer flex flex-direction-column align-items-center justify-content-center">
         <h4 className="text-align-center">Batch Details</h4>
-
         <div className="singleBatchContainer flex justify-content-center align-items-center flex-direction-column">
           <p className="batch_information">
             <label>Batch Name:</label>
@@ -59,7 +53,6 @@ function BatchDetails({ history, match }) {
           </p>
           <p className="mxy-1">Student Details</p>
           <div className="studentContainer ">
-
             {initialValues.students.length===0 ?<div>No Student Added</div>:
             initialValues.students.map((student, sIndex) => {
               return (
@@ -76,32 +69,11 @@ function BatchDetails({ history, match }) {
               );
             })}
           </div>
-
           <p className="batch_information">
             <label>No. of Students:</label>
             {initialValues.students.length}
           </p>
         </div>
-        {/* 
-        <div className="titleComponent dc TextStyle">
-          <p className="template_form_details" title="Template Title" >
-            {initialValues.template_title}
-          </p>
-        </div>
-
-        <div className="template_form_question_answer_details" title="Question Answer Set">
-          {initialValues.questionSets.map((questionSet, qIndex) => {
-            return (<div className="questionSetCard" key={qIndex}>
-              <p className="question_answer_set_details" title="Question">
-                {qIndex + 1} {questionSet.question}
-              </p>
-              <p className="question_answer_set_details" title="Answer">
-                {questionSet.answer}
-              </p>
-            </div>)
-          })
-          }
-        </div> */}
         {/* <div className="count_details">No. of Questions: {initialValues.questionSets.length}</div> */}
         <div className="form-buttons">
           <button onClick={() => history.push("/batch/list")}>
@@ -121,5 +93,4 @@ function BatchDetails({ history, match }) {
     </div>
   );
 }
-
 export default BatchDetails;

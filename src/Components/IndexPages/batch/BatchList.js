@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getBatchList, removeBatch } from "./../../../Service/batchService";
 import { deleteBatchAction, saveAllBatchDetailsAction } from "./../../../redux/action/BatchAction";
@@ -20,7 +20,6 @@ function BatchList({ history }) {
       } else toast.error("Unable to delete batch");
     });
   };
-
 
   useEffect(() => {
     if (batchList.length === 0) {

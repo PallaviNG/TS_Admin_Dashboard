@@ -1,6 +1,6 @@
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import React,{useEffect,useState} from "react";
+import React,{useEffect} from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import { addNewTrainerAction, saveAllTrainerDetailsAction } from "../../../redux/action/TrainerAction";
@@ -45,7 +45,7 @@ function NewTrainer({ history }) {
           dispatch(saveAllTrainerDetailsAction(result.trainerList));
         });
       }
-  },[trainerList]);
+  },[]);
 
   return (
     <div className="content">

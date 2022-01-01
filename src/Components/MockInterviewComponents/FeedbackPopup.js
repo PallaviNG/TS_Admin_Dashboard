@@ -42,7 +42,7 @@ function FeedbackPopup(props) {
     return (
         <div className='fParentContainer'>
             <div className='feedbackPopupContainer'>
-                <div className='feedbackHeading'><h4>FeedBack Modal</h4>
+                <div className='feedbackHeading'><h4>FeedBack Prompt</h4>
                     <div className='feedbackChild'>{props.children}</div>
                 </div>
                 <div className="flex justify-content-center align-items-center">

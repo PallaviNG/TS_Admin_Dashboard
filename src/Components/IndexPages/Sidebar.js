@@ -16,9 +16,10 @@ function Sidebar() {
           </div>
         </Link>
 
+
         <Link className="accordion" to="#">
           {/* <div className="flex"> */}
-            {/* <span><i className="fa fa-list-alt" aria-hidden="true"></i></span> */}
+          {/* <span><i className="fa fa-list-alt" aria-hidden="true"></i></span> */}
           <span className="flex justify-content-center">MOCK INTERVIEW</span>
           {/* </div> */}
           <div className="panel">

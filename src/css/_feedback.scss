@@ -18,10 +18,19 @@
     top:23%;
     left: 40%;
     background-color: lightcyan;
-    opacity: 1;
     padding: 1.5em;
-    transform: scale(0.9);
-    transition: all 1s ease-in-out;
+    // opacity: 1;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    @keyframes fadeInAnimation {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
     .feedbackHeading {
         display: flex;
         justify-content: center;

@@ -7,58 +7,6 @@ body {
   text-align: center;
 }
 
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 260px;
-  background-image:linear-gradient(to bottom,white,rgba(0,0,255,0.2)), url("/src/assets/images/sidebar_bg.jpg");
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-}
-
-.sidebar a {
-  display: block;
-  color: black;
-  text-decoration: none;
-}
-
-.sidebar a.active span {
-  background-color: #04aa6d;
-  color: white;
-}
-
-// .sidebar a:hover:not(.active) {
-.sidebar a:hover {
-  background-color: rgba(176, 131, 218,0.2);
-  color: purple;
-}
-
-div.content {
-  margin-left: 280px;
-  padding: 1px 16px;
-}
-
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {
-    float: left;
-  }
-  div.content {
-    margin-left: 10;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
-}
 
 .links {
   color: white;

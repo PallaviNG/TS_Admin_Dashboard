@@ -41,7 +41,7 @@ function Interviewer_BatchList({ history, user }) {
               {interviewer_batchList.map((batch, index) => {
                 return (
                   <div
-                    className="card batch_card flex flex-direction-column"
+                    className="card batch_card interviewer_batch_card flex flex-direction-column"
                     key={index}
                   >
                     <Link to={`/single/batch/details/${batch.batch_id}`}>

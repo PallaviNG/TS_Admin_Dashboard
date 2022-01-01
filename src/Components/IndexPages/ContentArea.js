@@ -9,6 +9,7 @@ import { getInterviewerDetailsByID, getInterviewerList } from "../../Service/int
 import { saveAllInterviewersAction } from "../../redux/action/InterviewerAction";
 import { getBatchList } from "../../Service/batchService";
 import { saveAllBatchDetailsAction } from "../../redux/action/BatchAction";
+import NewYearPopup from './../Event_Celebrations/NewYearPopup';
 
 function ContentArea({ user }) {
   let templateForms = useSelector(
@@ -25,7 +26,9 @@ function ContentArea({ user }) {
 
   let [interviewerDetails, setInterviewerDetails] = useState({});
   let [interviewerBatches, setInterviewerBatches] = useState([]);
+  let [openPopup, setOpenPopup] = useState(false);
 
+  let [newYear,setNewYear] = useState(false);
   useEffect(() => {
     if (user.admin_role === "interviewer") {
       // console.log("Interviewer");
@@ -47,6 +50,9 @@ function ContentArea({ user }) {
   }, [user.admin_role]);
 
   useEffect(() => {
+    let today = new Date();
+    newYear = (today.getDate() === 1 && today.getMonth() === 0);
+    setNewYear(newYear);
     console.log(user.admin_role);
     if (user.admin_role === "admin") {
       getTemplateList("get-template-list").then((result) => {
@@ -69,6 +75,8 @@ function ContentArea({ user }) {
         dispatch(saveAllBatchDetailsAction(result.batchList));
       });
     }
+
+    console.log(newYear);
   }, []);
 
   return (
@@ -77,6 +85,16 @@ function ContentArea({ user }) {
         <div className="formComponent flex content_area_cards justify-content-flex-start align-items-center">
 
           {/* {user.admin_role === "admin" ?  */}
+
+          {
+            // newYear ?
+              <div>
+                {newYear ? <NewYearPopup open={newYear} >
+                  <button className="btn btn-danger" onClick={() => setNewYear(false)}>X</button>
+                </NewYearPopup> : null}
+              </div>
+              // : null
+          }
 
           {(() => {
             switch (user.admin_role) {
@@ -193,7 +211,7 @@ function ContentArea({ user }) {
           } */}
 
         </div>
-      </div>
+      </div >
     </>
   );
 }

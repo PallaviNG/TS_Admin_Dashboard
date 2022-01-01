@@ -5,12 +5,11 @@ import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
 import { getBatchList, updateBatchStudent } from "../../../Service/batchService";
 import { saveAllBatchDetailsAction } from "../../../redux/action/BatchAction";
-import { getStudentList,getStudentByID } from './../../../Service/studentService';
+import { getStudentList, getStudentByID } from './../../../Service/studentService';
 import { saveAllMockStudentDetailsAction } from './../../../redux/action/MockStudentAction';
 
 function AddStudentToBatch({ history, match }) {
     let studentList = useSelector((state) => state.studentDetails.students);
-    let batchList = useSelector((state) => state.batchDetails.batches);
     let dispatch = useDispatch();
 
     let [studentOptions, setStudentOptions] = useState([]);
@@ -57,21 +56,22 @@ function AddStudentToBatch({ history, match }) {
         getStudentList("get-student-list").then((result) => {
             if (result === undefined) return false;
             dispatch(saveAllMockStudentDetailsAction(result.studentList));
-        });
 
-        studentOptions = [];
-        studentOptions.push({ value: 0, name: "-Select Student-" });
-        if (studentList.length === 0)
-            studentOptions.push({ value: undefined, name: "No Student found!" });
-        else {
-            studentList.forEach((student) => {
-                studentOptions.push({
-                    value: student._id,
-                    name: student.student_name,
+
+            studentOptions = [];
+            studentOptions.push({ value: 0, name: "-Select Student-" });
+            if (studentList.length === 0)
+                studentOptions.push({ value: undefined, name: "No Student found!" });
+            else {
+                studentList.forEach((student) => {
+                    studentOptions.push({
+                        value: student._id,
+                        name: student.student_name,
+                    });
                 });
-            });
-        }
-        setStudentOptions([...studentOptions]);
+            }
+            setStudentOptions([...studentOptions]);
+        });
     }, []);
 
 
@@ -105,7 +105,7 @@ function AddStudentToBatch({ history, match }) {
                         _id: batchDetails._id,
                         batch_name: batchDetails.batch_name,
                         students: batchAddStudent,
-                        no_of_student:batchAddStudent.length
+                        no_of_student: batchAddStudent.length
                     };
                     console.log(updatedBatchData);
                     updatedBatchDetails = updatedBatchData;
