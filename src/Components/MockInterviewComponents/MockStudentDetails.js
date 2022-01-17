@@ -6,7 +6,7 @@ import { Formik } from "formik";
 import { getStudentByID } from "../../Service/studentService";
 import FeedbackPopup from "./FeedbackPopup";
 
-function MockStudentDetails({ history, match }) {
+function MockStudentDetails({ history, match,user }) {
 
     // console.log(match.param.student_id);
   let [initialValues, setInitialValues] = useState({
@@ -18,11 +18,17 @@ function MockStudentDetails({ history, match }) {
   });
 
   let [openPopup, setOpenPopup] = useState(false);
+  let [studentID,setStudentID]= useState();
+  let [batchID,setBatchID]= useState();
   useEffect(() => {
-    let _studentID = match.params.id;
+    studentID = match.params.student_id;
+    setStudentID(studentID);
+
+    batchID = match.params.batch_id;
+    setBatchID(batchID);
     // console.log(_studentID);
 
-    getStudentByID("get-student-by-id", _studentID).then((result) => {
+    getStudentByID("get-student-by-id", studentID).then((result) => {
       if (result === undefined) return false;
       // console.log(result);
       setInitialValues({ ...initialValues });
@@ -59,7 +65,7 @@ function MockStudentDetails({ history, match }) {
                 Feedback
               </button>
             </div>
-              {openPopup?<FeedbackPopup open = {openPopup} >
+              {openPopup?<FeedbackPopup open = {openPopup} history={history} user = {user} student_id={studentID} batch_id={batchID}>
                   <button className="btn btn-danger" onClick={()=>setOpenPopup(false)}>X</button>
               </FeedbackPopup>:null}
           </div>

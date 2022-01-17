@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {  useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { saveAllBatchDetailsAction } from "../../../redux/action/BatchAction";
-import { getBatchList } from "./../../../Service/batchService";
+import { getBatchList, getStudentListByBatchID } from "./../../../Service/batchService";
 import { Link } from "react-router-dom";
 
 function BatchDetails({ history, match }) {
@@ -22,6 +22,7 @@ function BatchDetails({ history, match }) {
       setBatches([...batches]);
       dispatch(saveAllBatchDetailsAction(result.batchList));
 
+
       if (batches.length > 0) {
         var singleBatchDetails = batches.filter(
           (batch) => batch._id === match.params.id
@@ -36,6 +37,8 @@ function BatchDetails({ history, match }) {
         }
       }
     });
+
+    
   }, []);
 
   return (
@@ -59,7 +62,7 @@ function BatchDetails({ history, match }) {
                 <div key={sIndex}>
                   <Link
                     className="primary-color px-2"
-                    to={`/single/student/details/${student._id}`}
+                    to={`/single/student/details/${initialValues._id}/${student._id}`}
                     title="Click to view Student Details"
                   >
                     <p className="my-1 mxy-2"><span className="pl-1">{sIndex + 1}

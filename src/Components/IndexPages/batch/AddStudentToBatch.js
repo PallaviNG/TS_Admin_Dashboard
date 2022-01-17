@@ -57,7 +57,6 @@ function AddStudentToBatch({ history, match }) {
             if (result === undefined) return false;
             dispatch(saveAllMockStudentDetailsAction(result.studentList));
 
-
             studentOptions = [];
             studentOptions.push({ value: 0, name: "-Select Student-" });
             if (studentList.length === 0)

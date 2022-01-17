@@ -46,3 +46,12 @@ export const updateTemplate = async (url, sendData) => {
         commonError(error);
     }
 };
+
+export const getTemplateByID = async(url,_id) => {
+    try {
+        let {data}=await post(base_url+url, { _id: _id });
+        return data;
+    } catch (error) {
+        commonError(error);
+    }
+};

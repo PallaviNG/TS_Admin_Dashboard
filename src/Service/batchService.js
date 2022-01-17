@@ -54,6 +54,15 @@ export const getTrainerList = async (url, sendData) => {
   }
 };
 
+export const getStudentListByBatchID = async (url, _id) => {
+  try {
+    let { data } = await post(base_url + url, { _id: _id });
+    return data;
+  } catch (error) {
+    commonError(error);
+  }
+};
+
 export const updateBatch = async (url, sendData) => {
   try {
     let { data } = await put(base_url + url, sendData);

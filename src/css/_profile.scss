@@ -1,0 +1,58 @@
+@import "_colors";
+.profileParentContainer {
+  display: flex;
+}
+
+.profileContainer {
+  height: 60vh;
+  width: 28%;
+  border: 1px solid lightgray;
+  .profileHeader {
+    height: auto;
+    padding: 0.5em 0;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    img {
+      height: 6em;
+      width: 6em;
+      border-radius: 50%;
+    }
+    .upload_image {
+      position: absolute;
+      bottom: 0.2em;
+      right:4em;
+      color: $success-color;
+      font-size: 1.4em;
+      cursor:pointer;
+      
+      input[type="file"] {
+          display:none;
+      }
+      &:hover {
+          color: green;
+      }
+    }
+  }
+  .profileBody {
+      height: auto;
+      padding: 1em;
+      border: 1px solid;
+      div {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            label {
+                display: inline-block;
+                width: 30%;
+            }
+            p{
+                margin:0.5em 0;
+                width: 60%;
+                color: $primary-color;
+            }
+        }
+  }
+}

@@ -40,8 +40,14 @@ import SharableTemplateForm from "./Components/MockInterviewComponents/SharableT
 import AddStudentToBatch from "./Components/IndexPages/batch/AddStudentToBatch";
 import BatchDetails from './Components/IndexPages/batch/BatchDetails';
 import InterviewerBatchAssignment from "./Components/MockInterviewComponents/InterviewerBatchAssignment";
-import Interviewer_BatchList from "./Components/InterviewerComponents/Interviewer_BatchList";
 import MockStudentDetails from "./Components/MockInterviewComponents/MockStudentDetails";
+import PreviewFeedbackForm from './Components/InterviewerComponents/PreviewFeedbackForm';
+import ViewProfile from './Components/LoginComponents/ViewProfile';
+import SubmittedMockFeedbackList from "./Components/InterviewerComponents/SubmittedMockFeedbackList";
+import ReactCharts from "./Components/MockInterviewComponents/Charts/ReactCharts";
+import StudentMockFeedback from "./Components/MockInterviewComponents/StudentMockFeedback";
+import InterviewerBatchList from './Components/InterviewerComponents/InterviewerBatchList';
+import QRCodeDemo from './Components/Extra/QRCodeDemo';
 
 
 function App() {
@@ -89,7 +95,7 @@ function App() {
           path="/mock/template/list"
           exact
           render={(props) => {
-            if (userDetails && userDetails.admin_role === "admin") return <TemplateList {...props} />;
+            if (userDetails && ['admin','interviewer'].includes(userDetails.admin_role)) return <TemplateList {...props} user={userDetails} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -99,7 +105,7 @@ function App() {
           path="/mock/template/preview"
           exact
           render={(props) => {
-            if (userDetails) return <PreviewTemplate {...props} user={userDetails} />;
+            if (userDetails &&['admin'].includes(userDetails.admin_role)) return <PreviewTemplate {...props} user={userDetails} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -108,7 +114,7 @@ function App() {
           path="/mock/single/template/detail/:id"
           exact
           render={(props) => {
-            if (userDetails) return <TemplateDetail {...props} />;
+            if (userDetails&&['admin','interviewer'].includes(userDetails.admin_role)) return <TemplateDetail {...props} user={userDetails} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -117,7 +123,7 @@ function App() {
           path="/mock/template/new"
           exact
           render={(props) => {
-            if (userDetails) return <CreateTemplate {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role) ) return <CreateTemplate {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -126,7 +132,7 @@ function App() {
           path="/mock/template/interviewer/assignment/:id"
           exact
           render={(props) => {
-            if (userDetails) return <TemplateAssignment {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <TemplateAssignment {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -135,7 +141,7 @@ function App() {
           path="/mock/template/interviewer/batch/assignment/:id"
           exact
           render={(props) => {
-            if (userDetails) return <InterviewerBatchAssignment {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <InterviewerBatchAssignment {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -144,7 +150,7 @@ function App() {
           path="/mock/template/interviewer/new"
           exact
           render={(props) => {
-            if (userDetails) return <NewInterviewer {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <NewInterviewer {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -153,7 +159,7 @@ function App() {
           path="/mock/template/interviewer/detail/:id"
           exact
           render={(props) => {
-            if (userDetails) return <InterviewerDetail {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <InterviewerDetail {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -163,7 +169,7 @@ function App() {
           path="/mock/template/interviewer/list"
           exact
           render={(props) => {
-            if (userDetails) return <InterviewerList {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <InterviewerList {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -171,7 +177,7 @@ function App() {
         <Route path="/mock/template/interviewer/share/form/:shareTemplate"
           exact
           render={(props) => {
-            if (userDetails) return <SharableTemplateForm {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <SharableTemplateForm {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -199,7 +205,7 @@ function App() {
           path="/batch/list"
           exact
           render={(props) => {
-            if (userDetails) return <BatchList {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <BatchList {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -208,7 +214,7 @@ function App() {
           path="/batch/edit/:id"
           exact
           render={(props) => {
-            if (userDetails) return <EditBatch {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <EditBatch {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -217,7 +223,7 @@ function App() {
           path="/batch/add/student/:id"
           exact
           render={(props) => {
-            if (userDetails) return <AddStudentToBatch {...props} />;
+            if (userDetails && ['admin', 'interviewer'].includes(userDetails.admin_role)) return <AddStudentToBatch {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -225,7 +231,7 @@ function App() {
         <Route path="/single/batch/details/:id"
           exact
           render={(props) => {
-            if (userDetails) return <BatchDetails {...props} />;
+            if (userDetails && ['admin', 'interviewer'].includes(userDetails.admin_role)) return <BatchDetails {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -234,7 +240,7 @@ function App() {
           path="/batch/new"
           exact
           render={(props) => {
-            if (userDetails) return <NewBatch {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <NewBatch {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -244,7 +250,7 @@ function App() {
           path="/trainer/list"
           exact
           render={(props) => {
-            if (userDetails) return <TrainerList {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <TrainerList {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -253,7 +259,7 @@ function App() {
           path="/trainer/edit/:id"
           exact
           render={(props) => {
-            if (userDetails) return <EditTrainer {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <EditTrainer {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -262,7 +268,7 @@ function App() {
           path="/trainer/new"
           exact
           render={(props) => {
-            if (userDetails) return <NewTrainer {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <NewTrainer {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -272,7 +278,7 @@ function App() {
           path="/course/list"
           exact
           render={(props) => {
-            if (userDetails) return <CourseList {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <CourseList {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -281,7 +287,7 @@ function App() {
           path="/course/edit/:id"
           exact
           render={(props) => {
-            if (userDetails) return <EditCourse {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <EditCourse {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -290,7 +296,7 @@ function App() {
           path="/course/new"
           exact
           render={(props) => {
-            if (userDetails) return <NewCourse {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <NewCourse {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -299,7 +305,7 @@ function App() {
           path="/mock/student/list"
           exact
           render={(props) => {
-            if (userDetails) return <ListStudents {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <ListStudents {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -308,14 +314,30 @@ function App() {
           path="/mock/student/new"
           exact
           render={(props) => {
-            if (userDetails) return <AddMockStudent {...props} />;
+            if (userDetails && ['admin'].includes(userDetails.admin_role)) return <AddMockStudent {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
 
-        <Route path="/single/student/details/:id" exact
+        <Route path="/single/student/details/:batch_id/:student_id" exact
           render={(props) => {
-            if (userDetails) return <MockStudentDetails {...props} />;
+            if (userDetails && ['interviewer', 'admin'].includes(userDetails.admin_role)) return <MockStudentDetails user={userDetails} {...props} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+
+        <Route path="/students/feedback/:id" exact
+          render={(props) => {
+            if (userDetails && ['admin','student','interviewer'].includes(userDetails.admin_role)) return <StudentMockFeedback user={userDetails} {...props} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+
+
+        <Route path="/mock/preview/feedback/:interviewer_id/:batch_id/:template_id/:student_id" exact
+          render={(props) => {
+            if (userDetails && ['interviewer', 'admin'].includes(userDetails.admin_role))
+              return <PreviewFeedbackForm user={userDetails} {...props} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
@@ -331,15 +353,52 @@ function App() {
         />
 
         <Route
+          path="/view-profile"
+          exact
+          render={(props) => {
+            if (userDetails && ['interviewer', 'admin','student'].includes(userDetails.admin_role)) return <ViewProfile user={userDetails} />
+            else return <Redirect to="/admin-login" />
+          }}
+        />
+
+        <Route
           path="/interviewer/login/batch/list"
           exact
           render={(props) => {
-            if (userDetails && userDetails.admin_role === "interviewer") return <Interviewer_BatchList {...props} user={userDetails} />;
+            if (userDetails && ['interviewer'].includes(userDetails.admin_role)) return <InterviewerBatchList {...props} user={userDetails} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+
+        <Route path="/interviewer/batch/view/students"
+          exact
+          render={(props) => {
+            if (userDetails && ['interviewer'].includes(userDetails.admin_role)) return <InterviewerBatchList {...props} user={userDetails} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+
+        <Route path="/interviewer/batch/mock/feedback/form/list"
+          exact
+          render={(props) => {
+            if (userDetails && ['interviewer', 'admin', 'student'].includes(userDetails.admin_role)) return <SubmittedMockFeedbackList {...props} user={userDetails} />;
             else return <Redirect to="/admin-login" />;
           }}
         />
 
 
+        <Route path="/react-charts/display" exact
+          render={(props) => {
+            if (userDetails && ['interviewer', 'admin', 'student'].includes(userDetails.admin_role)) return <ReactCharts {...props} user={userDetails} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
+        <Route path="/qr-generator/demo" exact
+          render={(props) => {
+            if (userDetails && ['interviewer', 'admin', 'student'].includes(userDetails.admin_role)) return <QRCodeDemo {...props} user={userDetails} />;
+            else return <Redirect to="/admin-login" />;
+          }}
+        />
 
       </Switch>
     </>

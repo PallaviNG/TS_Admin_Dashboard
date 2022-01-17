@@ -48,7 +48,7 @@ function Navbar({ user }) {
 
 
           <div className="loginMenuSection flex ">
-            <img src={user1} className="avtar-image" alt="avatar-image" />
+            <Link to="/view-profile"><img src={user1} className="avtar-image" alt="avatar-image" /></Link>
             <div className="logninMenu flex flex-direction-column align-items-center justify-content-center">
               <div className="flex align-items-center">
                 <div className=" flex flex-direction-column align-items-center">

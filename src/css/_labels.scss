@@ -1,0 +1,60 @@
+@import "_colors.scss";
+
+.label {
+    padding:0.5em 1em;
+    color:black;
+    font-size: 0.8em;
+}
+
+.label-primary {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+}
+
+.label-secondary {
+    background-color: $secondary-color;
+    color: white;
+    border: none;
+}
+
+.label-success {
+    background-color: $success-color;
+    color: white;
+    border: none;
+}
+
+.label-warning {
+    background-color: $warning-color;
+    color: white;
+    border: none;
+}
+
+.label-danger {
+    background-color: $danger-color;
+    color: white;
+    border: none;
+}
+
+.label-other {
+    background-color: lightgray;
+    color: black;
+    border: none;
+}
+
+.label-info {
+    background-color: $info-color;
+    color: white;
+    border: none;
+}
+
+.label-inverse {
+    background-color: $inverse-color;
+    color: white;
+}
+
+.label-faded {
+    background-color: $faded-color;
+    color: black;
+    border: none;
+}

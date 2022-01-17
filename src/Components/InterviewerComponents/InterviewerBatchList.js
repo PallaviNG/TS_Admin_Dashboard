@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import { getInterviewerDetailsByID } from "../../Service/interviewerService";
-import { saveAllInterviewer_BatchDetailsAction } from './../../redux/action/Interviewer_BatchAction';
+import { saveAllInterviewer_BatchDetailsAction } from '../../redux/action/Interviewer_BatchAction';
 import Interviewer_Batch_Students from './Interviewer_Batch_Students';
 
-function Interviewer_BatchList({ history, user }) {
+function InterviewerBatchList({ history, user }) {
   let interviewer_batchList = useSelector((state) => state.interviewer_batchListDetails.interviewer_batches);
   let dispatch = useDispatch();
 
@@ -48,11 +48,13 @@ function Interviewer_BatchList({ history, user }) {
                     className="card batch_card interviewer_batch_card flex flex-direction-column"
                     key={index}
                   >
+                    <div className="iTemplateContent">
                     <Link to={`/single/batch/details/${batch.batch_id}`}>
                       <p className="batch_details" title="Batch Name">
-                        {batch.batch_name}
+                        Batch Name : {batch.batch_name}
                       </p>
                     </Link>
+                    </div>
                     <div className="batchListIcons flex justify-content-space-around align-items-center">
                       <span onClick={() => history.replace(`/batch/add/student/${batch.batch_id}`)} title="Add New Student to Batch">
                         <i className="fa fa-user-plus info-color" aria-hidden="true"></i>
@@ -78,4 +80,4 @@ function Interviewer_BatchList({ history, user }) {
   )
 }
 
-export default Interviewer_BatchList;
+export default InterviewerBatchList;

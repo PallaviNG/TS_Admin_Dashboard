@@ -1,0 +1,110 @@
+@import "_colors";
+
+.ts_badge {
+    height:2em;
+    width:2em;
+    color: black;
+    border: 1px solid;
+    border-radius: 50%;
+    background-color: white;
+}
+
+/*You may add different sizes of badges by giving padding
+**Ex.ts-tiny, ts-small,ts-large,ts-x-large,ts-xx-large,ts-jumbo
+*/
+
+.badge-success {
+    background-color: $success-color;
+    color: white;
+    border:none;
+}
+
+.badge-primary {
+    background-color: $primary-color;
+    border:none;
+    color: white;
+}
+
+.badge-info {
+    background-color: $info-color;
+    border:none;
+    color: white;
+}
+
+.badge-warning {
+    background-color: $warning-color;
+    border: none;
+    color: white;
+}
+
+.badge-danger {
+    background-color: $danger-color;
+    border: none;
+    color: white;
+}
+
+.badge-faded {
+    background-color: $faded-color;
+    border:none;
+    color: white;
+}
+
+.badge-secondary {
+    background-color: $secondary-color;
+    border: none;
+    color: white;
+}
+
+.badge-inverse {
+    background-color: $inverse-color;
+    border: none;
+    color: white;
+}
+
+.badge-dark {
+    background-color: black;
+    border: none;
+    color: white;
+}
+
+/*Outlined-Badges */
+.badge-outlined-primary {
+    color:$primary-color;
+    border: 1px solid;
+}
+
+.badge-outlined-secondary {
+    color:$secondary-color;
+    border: 1px solid;
+}
+
+.badge-outlined-info {
+    color: $info-color;
+    border: 1px solid;
+}
+
+.badge-outlined-succes {
+    color: $success-color;
+    border: 1px solid;
+}
+
+.badge-outlined-danger{
+    color: $danger-color;
+    border: 1px solid;
+}
+
+.badge-outlined-warning {
+    color: $warning-color;
+    border: 1px solid;
+}
+
+.badge-outlined-faded {
+    color: $faded-color;
+    border: 1px solid;
+}
+
+.badge-outlined-inverse {
+    color: $inverse-color;
+    border: 1px solid;
+}
+

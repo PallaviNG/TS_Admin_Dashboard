@@ -1,0 +1,51 @@
+@import "_colors";
+
+.qrTitle{
+    background-color: $primary-color;
+    color: white;
+    display: flex;
+    padding: 0.8rem;
+    justify-content: center;
+}
+.qrFormGroup {
+    width: 100%;
+    // border: 1px solid;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+
+    label {
+        display: inline-block;
+        width: 20%;
+    }
+    input {
+        padding: 0.5rem;
+        width: 50%;
+        border-radius: 5px;
+        border: 1px solid gray;
+    }
+    button {
+        padding: 0.5rem;
+        &:hover {
+            cursor: pointer;
+            background-color: navy;
+        }
+    }
+}
+.qrCard {
+    width: 30%;
+    height: 15rem;
+    border: 1px solid;
+    img {
+        // height: 12rem;
+        width: 60%;
+    }
+}
+.qrBtn {
+    background-color:rgb( 255, 0, 102);
+    border:none;
+    color:white;
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(255, 0, 204);
+    }
+}

@@ -4,14 +4,13 @@ import { toast } from 'react-toastify';
 import { saveAllTemplateFormsAction } from "../../redux/action/TemplateAction";
 import { getTemplateList } from './../../Service/templateService';
 
-function TemplateDetail({ history, match }) {
-  let templateForms = useSelector((state) => state.templateDetails.templateList);
-
+function TemplateDetail({ history, match,user }) {
   let [initialValues, setInitialValues] = useState({
     template_title: "",
     questionSets: [],
   });
 
+  console.log(user);
   let [templates, setTemplates] = useState([]);
   let dispatch = useDispatch();
 
@@ -65,29 +64,28 @@ function TemplateDetail({ history, match }) {
         </div>
         <div className="count_details">No. of Questions: {initialValues.questionSets.length}</div>
         <div className="form-buttons">
+
+          {(user.admin_role==="admin")?<>
           <button onClick={() => history.push("/mock/template/list")}>
             <span className="backIcon"><i className="fa fa-hand-o-left" aria-hidden="true"></i> </span> Template List
           </button>
           <button onClick={() => history.push("/mock/template/interviewer/list")}>
             <span className="backIcon"><i className="fa fa-hand-o-left" aria-hidden="true"></i> </span> Interviewer List
+          </button></>:null
+          }
+
+          {user.admin_role==="interviewer" ?
+          <>
+          <button onClick={() => history.push("/mock/template/list")}>
+            <span className="backIcon"><i className="fa fa-hand-o-left" aria-hidden="true"></i> </span> Template List
           </button>
+          </>:null}
+
         </div>
       </div>
     </div>
   );
 }
 
-/*useEffect(() => {
-  console.log(history.location.pathname);
-  let historyPathname = history.location.pathname;
-  let templateID = historyPathname.substring( historyPathname.lastIndexOf('/')+1,historyPathname.length);
-  console.log(templateID);
-});
-return (
-  <div className="content">
-    <div className="formComponent flex flex-direction-column align-items-center justify-content-center">
-      <h4 className="text-align-center">Template Details</h4>
-      </div></div>);
-}*/
 
 export default TemplateDetail;

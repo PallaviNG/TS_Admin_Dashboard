@@ -9,6 +9,7 @@ function AdminRegister({ history }) {
     let initialValues = {
         admin_name: "",
         admin_email: "",
+        admin_contact:0,
         admin_role: "",
         admin_password: "",
     };
@@ -24,6 +25,7 @@ function AdminRegister({ history }) {
     let validationSchema = yup.object().shape({
         admin_name: yup.string().min(4, "username must be more than 4 characters").max(30, "admin username must be less than 30 characters").required("username is required"),
         admin_password: yup.string().required("password is required"),
+        admin_contact:yup.number().required("Contact number is required"),
         admin_email: yup.string().required("Email ID is required"),
         admin_role: yup.string().required("Select role")
     });
@@ -81,6 +83,21 @@ function AdminRegister({ history }) {
                                     />
                                 </div>
                                 <ErrorMessage name="admin_email" className="error" component={InputError} />
+                            </div>
+                            <div className=" flex flex-direction-column justify-content-center align-items-center">
+                                <div className="login-form-group flex justify-content-center align-items-center">
+                                    <span className="flex justify-content-center align-items-center">
+                                    <i className="fa fa-phone" aria-hidden="true"></i>
+                                    </span>
+                                    <Field
+                                        name="admin_contact"
+                                        id="admin_contact"
+                                        type="number"
+                                        autoComplete="off"
+                                        placeholder="Contact Number"
+                                    />
+                                </div>
+                                <ErrorMessage name="admin_contact" className="error" component={InputError} />
                             </div>
                             <div className=" flex flex-direction-column justify-content-center align-items-center">
                                 <div className="login-form-group flex justify-content-center align-items-center">

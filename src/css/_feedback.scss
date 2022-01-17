@@ -1,64 +1,259 @@
+@import "_colors";
 .fParentContainer {
-    position: fixed;
-    z-index:1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.6);
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .feedbackPopupContainer {
-    height: 40vh;
-    width: 35%;
-    border: lightgray;
-    border-radius: 5px;
-    position: fixed;
-    top:23%;
-    left: 40%;
-    background-color: lightcyan;
-    padding: 1.5em;
-    // opacity: 1;
-    animation: fadeInAnimation ease 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    @keyframes fadeInAnimation {
-        0%{
-            opacity: 0;
-        }
-        100%{
-            opacity: 1;
-        }
+  height: 15rem;
+  width: 35%;
+  border: lightgray;
+  border-radius: 5px;
+  position: fixed;
+  top: 23%;
+  left: 40%;
+  background-color: lightcyan;
+  padding: 1.5em;
+  // opacity: 1;
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
     }
-    .feedbackHeading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        h4{
-            width: 90%;
-            display: flex;
-            justify-content: center;
-        }
-        .feedbackChild{
-            width: 10%;
-            display: flex;
-            button:hover {
-                background-color: red;
-            }
-        }
+    100% {
+      opacity: 1;
     }
+  }
+  .feedbackHeading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h4 {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+    }
+    .feedbackChild {
+      width: 10%;
+      display: flex;
+      button:hover {
+        background-color: red;
+      }
+    }
+  }
 }
 
 .fPIcons {
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    button {
-        img {
-            height: 1.5em;
-            width: 1.5em;
-        }
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  button {
+    img {
+      height: 1.5em;
+      width: 1.5em;
     }
+  }
+}
+
+/*PREVIEW FEEDBACK TEMPLATE*/
+.previewFeedbackFormContainer {
+  .studentMockRating {
+    background-color: lightpink;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding:0.5rem 3rem;
+  }
+  label {
+    display: inline-block;
+  }
+  input,
+  textarea,
+  select {
+    border: 1px solid;
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+    padding: 0.5em 2em 0.5em 0.3em;
+    border-radius: 5px;
+    border: 1px solid dodgerblue;
+    &:hover {
+      box-shadow: inset 0px 0px 2px 2px lightblue;
+      cursor: text;
+    }
+  }
+  border: 1px solid lightgray;
+  width: 85%;
+  .pTemplateHeader {
+    padding: 0.5em;
+    background-color: rgb(215, 232, 238);
+    display: flex;
+
+    label {
+      width: 8em !important;
+    }
+    input,
+    select {
+      width: 70%;
+    }
+  }
+  .pTemplateBody {
+    height: 70vh;
+    overflow-x: auto;
+    width: 100%;
+    padding: 1em;
+
+    .previewFeedbackTemplate {
+      border: 1px solid gray;
+      border-radius: 8px;
+      width: 100%;
+      padding: 0;
+      margin: 0.7em 0.2em;
+
+      .qaInputs {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        .questionAnswerBox {
+          width: 90%;
+          .TextStyle {
+            width: 100%;
+            padding: 0.4em;
+            label {
+              width: 100% !important;
+              padding: 0.3em 0.5em;
+              margin: 0.3em;
+              margin-left: 0;
+            }
+            input,
+            textarea {
+              width: 100%;
+              margin-left: 0;
+            }
+          }
+        }
+        .score_box {
+          height: 100%;
+          width: 15%;
+          padding-right: 00.5em;
+          input {
+            width: 90%;
+            padding: 0.8em 0.5em;
+          }
+        }
+      }
+    }
+  }
+}
+
+.rating {
+  .checked {
+    color: orange;
+  }
+}
+
+// FEEDBACK FORM LIST
+.parent_feedback_list_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  
+
+  .adminFeedbackContainer {
+    padding: 0%;
+    border: 1px solid lightgray;
+    width: 25%;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 1em;
+    .afbContent {
+      height: 14rem;
+      padding: 0.5em;
+    }
+  }
+
+
+
+  .feedbackListContainer {
+    padding: 0%;
+    border: 1px solid lightgray;
+    width: 29%;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    .fbContent {
+      height: 11rem;
+      padding: 0.5em;
+    } 
+  }
+
+  .feedbackListDetails {
+    padding: 0.5em;
+    font-size: 0.8rem;
+    color: $inverse-color;
+  }
+  .feedbackListIcons {
+    width: 100%;
+    padding: 0.2em 0;
+    font-size: 1.4em;
+    text-align: center;
+    span {
+      width: 100%;
+    }
+  }
+}
+
+//StudentMockFeedback
+.smContainer {
+  width: 27% !important;
+  height: 13rem!important;
+}
+
+.afContainer {
+  height: 14rem!important;
+}
+
+
+//MOCK POP-UP 
+.mockContainer {
+  height: 16rem;
+  
+  .feedbackChild {
+    position: absolute;
+    top: 0rem;
+    right: 1rem;
+    button {
+      border-radius: 0 5px 0 0;
+    }
+  }
+}
+.mock-pop-up-container {
+  display: flex;
+  label {
+    display: inline-block;
+    width: 10rem;
+    // border: 1px solid;
+  }
+  .mockSelector {
+    padding:0.5rem 1rem;
+    select {
+      padding: 0.25rem 0.5rem ;
+      width: 10rem;
+    }
+  }
 }

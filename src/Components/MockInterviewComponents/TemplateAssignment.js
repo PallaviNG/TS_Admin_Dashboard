@@ -121,7 +121,6 @@ function TemplateAssignment({ history, match }) {
               toast.info("No changes made!!");
             history.push("/mock/template/interviewer/list");
           });
-
       });
   }
 

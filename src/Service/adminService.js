@@ -1,4 +1,4 @@
-import { base_url, commonError,get, post } from "./httpService";
+import { base_url, commonError, get, post } from "./httpService";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
 
@@ -15,7 +15,7 @@ export const getAdminLogin = async (url, sendData) => {
 export const saveAdminRegister = async (url, sendData) => {
   try {
     let data = await post(base_url + url, sendData);
-      toast.success("Registered Successfully");
+    toast.success("Registered Successfully");
     return data;
   } catch (error) {
     commonError(error);
@@ -24,8 +24,8 @@ export const saveAdminRegister = async (url, sendData) => {
 export const getAdminUsersList = async (url) => {
   try {
     let data = await get(base_url + url);
-      // toast.success("Registered Successfully");
-      console.log(data);
+    // toast.success("Registered Successfully");
+    console.log(data);
     return data;
   } catch (error) {
     commonError(error);
@@ -50,3 +50,15 @@ export const removeAuthToken = (token) => {
   localStorage.removeItem("token")
   window.location.replace("/");
 }
+
+export const uploadProfile = async (url, sendData) => {
+  try {
+    console.log(sendData);
+    let data = await post(base_url + url, sendData);
+    console.log(data);
+    toast.success("Uploaded Successfully");
+    return data;
+  } catch (error) {
+    commonError(error);
+  }
+};

@@ -1,0 +1,50 @@
+.hr{
+    border-top: 1px solid black;
+}
+
+.hr-dotted {
+    border-top: 1px dotted black;
+}
+
+.hr-dashed {
+    border-top: 1px dashed black;
+}
+
+.hr-double-line {
+    border-top: 1px double black;
+}
+
+.hr-thick {
+    border-top: 5px thick;
+}
+
+.hr-thin {
+    border-top: 1px thin black;
+}
+
+.text-decoration-underline{
+    text-decoration: underline ;
+}
+
+.text-decoration-underline-dotted {
+    text-decoration: underline dotted;
+}
+
+.text-decoration-underline-wavy {
+    text-decoration: underline wavy;
+}
+
+.text-decoration-underline-overline {
+    text-decoration: underline overline black;
+}
+
+.text-decoration-line-through {
+    text-decoration: line-through;
+}
+
+.text-underline-offset-auto {
+    text-underline-offset: auto;
+}
+.text-underline-offset {
+    text-underline-offset: 0.2em;
+}
